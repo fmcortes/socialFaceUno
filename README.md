@@ -1,2 +1,2 @@
 # socialBook
-Demo for a social network
+Demo for a social network test
