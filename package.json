@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "deploy": "ng build --base-href /socialBook/",
+    "build": "ng build",
+    "deploy": "ng build --base-href /socialFaceUno/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
