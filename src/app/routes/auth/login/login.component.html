@@ -1,0 +1,31 @@
+<div class="login-form-box">
+  <h1>Sign In</h1>
+  <form action="">
+    <div class="login-input-group">
+      <div class="login-input-field">
+        <i class="fa-solid fa-envelope"></i>
+        <input
+          type="text"
+          name="userEmail"
+          id="userEmail"
+          placeholder="Email"
+        />
+      </div>
+      <div class="login-input-field">
+        <i class="fa-solid fa-lock"></i>
+        <input
+          type="text"
+          name="userPassword"
+          id="userPassword"
+          placeholder="Password"
+        />
+      </div>
+      <p>Don't  have an account? <a [routerLink]="['/auth/register']">Click Here!</a></p>
+      <p>Lost Your Password <a href="">Click Here!</a></p>
+    </div>
+    <div class="login-btn-field">
+      <button type="button" (click)="signIn()">Sign In</button>
+    </div>
+  </form>
+</div>
+

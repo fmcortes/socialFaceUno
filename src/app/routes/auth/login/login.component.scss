@@ -1,0 +1,70 @@
+@import "../../../../scss/colors";
+
+.login {
+  &-form-box {
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: $white;
+    padding: 50px 60px 70px;
+    text-align: center;
+    & h1 {
+      font-size: 30px;
+      margin-bottom: 60px;
+      color: $blue;
+    }
+    & p {
+      text-align: left;
+      font-size: 13px;
+      margin-bottom: 8px;
+      & a {
+        text-decoration: none;
+        color: $blue;
+      }
+    }
+  }
+  &-input-group {
+    height: 200px;
+  }
+  &-input-field {
+    background: #eaeaea;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    & input {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      padding: 18px 15px;
+    }
+    & i {
+      margin-left: 15px;
+      color: #999;
+    }
+  }
+  &-btn-field {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    & button {
+      flex-basis: 48%;
+      background: $blue;
+      color: $white;
+      height: 40px;
+      border-radius: 20px;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      transition: background 1s;
+      &.disable {
+        background-color: #eaeaea;
+        color: #555
+      }
+    }
+  }
+}
