@@ -2,6 +2,6 @@
   <img src="../assets/images/profile-pic.png" alt="" />
   <div>
     <p>Jhon Nicholson</p>
-    <a href="profile.html" *ngIf="showProfileLink">See your profile</a>
+    <a [routerLink]="['/home/profile']" *ngIf="showProfileLink">See your profile</a>
   </div>
 </div>
