@@ -1,6 +1,12 @@
+@import '../../../../scss/colors';
+@import '../../../../scss/mixings/media-queries';
+
 .profile-container {
   padding: 20px 15%;
   color: #626262;
+  @include tablet {
+    padding: 20px 5%;
+  }
 }
 
 .cover-img {
@@ -16,6 +22,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  @include tablet {
+    flex-wrap: wrap;
+  }
 }
 
 
@@ -27,6 +36,9 @@
 .pd-row div h3 {
   font-size: 25px;
   font-weight: 600;
+  @include tablet {
+    font-size: 16px;
+  }
 }
 
 .pd-row div p {
@@ -57,6 +69,10 @@
   border-radius: 3px;
   margin-left: 10px;
   cursor: pointer;
+  @include tablet {
+    margin-left: 0;
+    margin-right: 10px;
+  }
 }
 
 .pd-right button img {
@@ -71,6 +87,10 @@
 
 .pd-right {
   text-align: right;
+  @include tablet {
+    text-align: left;
+    margin-top: 15px;
+  }
 }
 
 .pd-right a {
@@ -90,14 +110,23 @@
   align-items: flex-start;
   justify-content: space-between;
   margin-top: 20px;
+  @include tablet {
+    flex-wrap: wrap;
+  }
 }
 
 .info-col {
   flex-basis: 33%;
+  @include tablet {
+    flex-basis: 100%;
+  }
 }
 
 .post-col {
   flex-basis: 65%;
+  @include tablet {
+    flex-basis: 100%;
+  }
 }
 
 .profile-intro {
