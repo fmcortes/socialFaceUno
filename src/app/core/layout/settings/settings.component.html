@@ -8,7 +8,7 @@
     </div>
 
     <div class="settings-menu-inner">
-     <app-profile-picture></app-profile-picture>
+     <app-profile-picture [showProfileLink]="true"></app-profile-picture>
       <hr>
       <div class="settings-links">
         <img src="assets/images/feedback.png" alt="" class="settings-icon"/>
@@ -29,7 +29,7 @@
       </div>
       <div class="settings-links">
         <img src="assets/images/logout.png" alt="" class="settings-icon">
-        <a href="#">Logout <img src="assets/images/arrow.png" alt="" width="10px"></a>
+        <a [routerLink]="['/auth/login']">Logout <img src="assets/images/arrow.png" alt="" width="10px"></a>
       </div>
     </div>
   </div>
