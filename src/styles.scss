@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./scss/colors";
+@import "./scss/variables/colors";
+@import "./scss/variables/font";
 @import "./scss/mixings/media-queries";
+
+@import "./scss/button";
+@import "./scss/link";
+@import "./scss/forms";
 
 * {
   margin: 0;
@@ -24,6 +29,28 @@
 body {
   background: $body-color-light;
   transition: background 0.3s;
+}
+
+.btn-field {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* & button {
+    flex-basis: 48%;
+    background: $blue;
+    color: $white;
+    height: 40px;
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+    &.disable {
+      background-color: #eaeaea;
+      color: #555
+    }
+  } */
 }
 
 .write-post-container {

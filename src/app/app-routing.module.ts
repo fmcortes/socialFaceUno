@@ -25,6 +25,13 @@ const routes: Routes = [
             (m) => m.RegisterModule
           ),
       },
+      {
+        path: 'forgot-password',
+        loadChildren: () =>
+          import('./routes/auth/forgot-password/forgot-password.module').then(
+            (m) => m.ForgotPasswordModule
+          ),
+      },
     ],
   },
   {

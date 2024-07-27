@@ -1,0 +1,9 @@
+@import './variables/colors';
+@import './variables/font';
+
+
+.link {
+  font-size: $small;
+  color: $blue;
+  text-decoration: none;
+}
