@@ -1,6 +1,9 @@
+@import '../../../../scss/variables/colors';
+@import '../../../../scss/variables/font';
+
 .footer {
   text-align: center;
-  color: #9a9a9a;
+  color: $dusty-gray;
   padding: 10px 0 20px;
-  font-size: 13px;
+  font-size: $small;
 }

@@ -1,0 +1,20 @@
+@import "./variables/colors";
+
+.button {
+  flex-basis: 48%;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  transition: background 1s;
+  font-size: 1rem;
+  &-blue {
+    background: $blue;
+    color: $white;
+  }
+  &-disable {
+    background-color: $light-gray;
+    color: $medium-gray;
+  }
+}
