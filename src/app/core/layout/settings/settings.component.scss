@@ -37,7 +37,7 @@
   position: absolute;
   width: 90%;
   max-width: 350px;
-  background: var(--bg-color);
+  background: $white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   overflow: hidden;
@@ -60,7 +60,7 @@
 .settings-menu hr {
   border: 0;
   height: 1px;
-  background: #9a9a9a;
+  background: $dusty-gray;
   margin: 15px 0;
 }
 
@@ -82,7 +82,7 @@
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-  color: #626262;
+  color: $right-side-color;
 }
 
 
@@ -92,7 +92,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: #ccc;
+  background: $gray80;
   width: 45px;
   border-radius: 15px;
   padding: 2px 3px;
@@ -104,12 +104,12 @@
 #dark-btn span {
   width: 18px;
   height: 18px;
-  background: #fff;
+  background: $white;
   border-radius: 50%;
   display: inline-block;
 }
 
 #dark-btn.dark-btn-on {
   padding-left: 23px;
-  background: #0a0a0a;
+  background: $body-color-dark;
 }

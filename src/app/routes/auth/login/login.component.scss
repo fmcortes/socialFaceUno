@@ -1,0 +1,12 @@
+@import '../../../../scss/variables/colors';
+@import '../../../../scss/variables/font';
+
+.error-message {
+  color: $danger;
+  font-size: $medium;
+}
+
+.required-fields {
+  color: $danger;
+  font-size: $small;
+}
