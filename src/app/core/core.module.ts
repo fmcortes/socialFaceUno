@@ -8,10 +8,43 @@ import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component'
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './layout/footer/footer.component';
 import { AuthHeaderComponent } from './layout/auth-layout/components/auth-header/auth-header.component';
+import { SpinnerComponent } from './layout/spinner/spinner.component';
+import { SpinnerService } from './layout/spinner/spinner.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import {
+  authFeature,
+  authFeatureKey,
+} from './layout/auth-layout/store/reducer';
+import { AuthFacade } from './layout/auth-layout/store/auth-facade';
+import { EffectsModule } from '@ngrx/effects';
+
+import * as authEffects from './layout/auth-layout/store/effects';
 
 @NgModule({
-  declarations: [HeaderComponent, SettingsComponent, MainLayoutComponent, AuthLayoutComponent, FooterComponent, AuthHeaderComponent],
-  imports: [CommonModule, SharedModule, RouterModule],
-  exports: [HeaderComponent, MainLayoutComponent, SettingsComponent],
+  declarations: [
+    HeaderComponent,
+    SettingsComponent,
+    MainLayoutComponent,
+    AuthLayoutComponent,
+    FooterComponent,
+    AuthHeaderComponent,
+    SpinnerComponent,
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule,
+    HttpClientModule,
+    StoreModule.forFeature(authFeature),
+    EffectsModule.forFeature(authEffects),
+  ],
+  exports: [
+    HeaderComponent,
+    MainLayoutComponent,
+    SettingsComponent,
+    SpinnerComponent,
+  ],
+  providers: [SpinnerService, AuthFacade],
 })
 export class CoreModule {}

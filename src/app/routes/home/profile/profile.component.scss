@@ -1,9 +1,10 @@
 @import '../../../../scss/variables/colors';
+@import '../../../../scss/variables/font';
 @import '../../../../scss/mixings/media-queries';
 
 .profile-container {
   padding: 20px 15%;
-  color: #626262;
+  color: $right-side-color;
   @include tablet {
     padding: 20px 5%;
   }
@@ -16,7 +17,7 @@
 }
 
 .profile-details {
-  background: var(--bg-color);
+  background: $white;
   padding: 20px;
   border-radius: 4px;
   display: flex;
@@ -34,15 +35,15 @@
 }
 
 .pd-row div h3 {
-  font-size: 25px;
-  font-weight: 600;
+  font-size: $large;
+  font-weight: $font-weight-semi-bold;
   @include tablet {
-    font-size: 16px;
+    font-size: $medium;
   }
 }
 
 .pd-row div p {
-  font-size: 13px;
+  font-size: $small;
 }
 
 
@@ -59,13 +60,13 @@
 }
 
 .pd-right button {
-  background: #1876f2;
+  background: $blue;
   border: 0;
   outline: 0;
   padding: 6px 10px;
   display: inline-flex;
   align-items: center;
-  color: #fff;
+  color: $white;
   border-radius: 3px;
   margin-left: 10px;
   cursor: pointer;
@@ -81,8 +82,8 @@
 }
 
 .pd-right button:first-child {
-  background: #e4e6eb;
-  color: #000;
+  background: $pale-gray;
+  color: $black;
 }
 
 .pd-right {
@@ -94,7 +95,7 @@
 }
 
 .pd-right a {
-  background: #e4e6eb;
+  background: $pale-gray;
   border-radius: 3px;
   padding: 12px;
   display: inline-flex;
@@ -130,14 +131,14 @@
 }
 
 .profile-intro {
-  background: var(--bg-color);
+  background: $white;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 4px;
 }
 
 .profile-intro h3 {
-  font-weight: 600;
+  font-weight: $font-weight-semi-bold;
 }
 
 .intro-text {
@@ -155,13 +156,13 @@
 .profile-intro hr {
   border: 0;
   height: 1px;
-  background: #ccc;
+  background: $gray80;
   margin: 24px 0;
 }
 
 .profile-intro ul li {
   list-style: none;
-  font-size: 15px;
+  font-size: $medium;
   margin: 15px 0;
   display: flex;
   align-items: center;
@@ -180,8 +181,8 @@
 
 .title-box a {
   text-decoration: none;
-  color: #1876f2;
-  font-size: 14px;
+  color: $blue;
+  font-size: $small;
 }
 
 .photo-box {

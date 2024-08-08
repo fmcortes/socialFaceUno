@@ -1,0 +1,9 @@
+@import '../../../../../scss/variables/colors';
+
+.write-post-container {
+  width: 100%;
+  background: $white;
+  border-radius: 6px;
+  padding: 20px;
+  color: $right-side-color;
+}

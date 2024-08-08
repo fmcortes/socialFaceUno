@@ -1,3 +1,5 @@
+@import './variables/colors';
+
 .form {
   &-box {
     width: 90%;
@@ -31,6 +33,14 @@
 .input {
   &-group {
     width: 100%;
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      & span {
+        color: $danger;
+      }
+    }
   }
   &-field {
     background: #eaeaea;
@@ -38,6 +48,7 @@
     border-radius: 3px;
     display: flex;
     align-items: center;
+    flex-grow: 1;
     & input {
       width: 100%;
       background: transparent;
@@ -48,6 +59,9 @@
     & i {
       margin-left: 15px;
       color: #999;
+    }
+    &-invalid {
+      border: solid 1px $danger;
     }
   }
 }
