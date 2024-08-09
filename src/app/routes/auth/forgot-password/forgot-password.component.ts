@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthFacade } from 'src/app/core/layout/auth-layout/store/auth/auth-facade';
 
 @Component({
   selector: 'app-forgot-password',
@@ -7,9 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private authFacade: AuthFacade,
+    private formBuilder: FormBuilder
+  ) {}
 
-  forgotPasswordHandler(): void {
-    this.router.navigate(['auth', 'login']);
+  form = this.formBuilder.nonNullable.group({
+    email: ['', Validators.required],
+  });
+
+  onSubmit(): void {
+    const email = this.form.getRawValue().email;
+    this.authFacade.forgotPassword(email);
   }
 }

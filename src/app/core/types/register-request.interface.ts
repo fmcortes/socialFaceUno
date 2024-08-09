@@ -5,7 +5,6 @@ export interface RegisterRequestInterface {
   lastname: string;
   country: string;
   notification: string;
-  accesToken: string;
-  username: string;
-  image: string | null;
+  image?: string | null;
+  age?: number | null;
 }
