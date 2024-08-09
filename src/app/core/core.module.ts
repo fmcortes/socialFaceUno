@@ -12,14 +12,15 @@ import { SpinnerComponent } from './layout/spinner/spinner.component';
 import { SpinnerService } from './layout/spinner/spinner.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import {
-  authFeature,
-  authFeatureKey,
-} from './layout/auth-layout/store/reducer';
-import { AuthFacade } from './layout/auth-layout/store/auth-facade';
+
 import { EffectsModule } from '@ngrx/effects';
 
-import * as authEffects from './layout/auth-layout/store/effects';
+import * as authEffects from './layout/auth-layout/store/auth/effects';
+import * as countriesEffects from './layout/auth-layout/store/country/effects';
+import { CountryService } from './services/country.service';
+import { authFeature } from './layout/auth-layout/store/auth/reducer';
+import { AuthFacade } from './layout/auth-layout/store/auth/auth-facade';
+import { countriesFeature } from './layout/auth-layout/store/country/reducer';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import * as authEffects from './layout/auth-layout/store/effects';
     RouterModule,
     HttpClientModule,
     StoreModule.forFeature(authFeature),
-    EffectsModule.forFeature(authEffects),
+    StoreModule.forFeature(countriesFeature),
+    EffectsModule.forFeature([authEffects, countriesEffects]),
   ],
   exports: [
     HeaderComponent,
@@ -45,6 +47,6 @@ import * as authEffects from './layout/auth-layout/store/effects';
     SettingsComponent,
     SpinnerComponent,
   ],
-  providers: [SpinnerService, AuthFacade],
+  providers: [SpinnerService, AuthFacade, CountryService],
 })
 export class CoreModule {}

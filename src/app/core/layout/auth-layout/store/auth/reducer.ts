@@ -2,7 +2,7 @@ import { createFeature, createReducer, on } from '@ngrx/store';
 
 import { authActions } from './actions';
 import { routerNavigatedAction } from '@ngrx/router-store';
-import { AuthStateInterface } from '../../../types/auth-state.interface';
+import { AuthStateInterface } from '../../../../types/auth-state.interface';
 
 const initialState: AuthStateInterface = {
   isSubmiting: false,
