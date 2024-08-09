@@ -1,36 +1,213 @@
 <div class="form-box">
   <h1>Sign Up</h1>
-  <form action="">
+  <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="input-group">
-      <div class="input-field">
-        <i class="fa-solid fa-user"></i>
-        <input type="text" name="userName" id="userName" placeholder="Name" />
+      <div class="input-group-item">
+        <span>*</span>
+        <div
+          class="input-field"
+          [ngClass]="
+            form.controls.email.invalid &&
+            (form.controls.email.dirty || form.controls.email.touched)
+              ? 'input-field-invalid'
+              : ''
+          "
+        >
+          <i class="fa-solid fa-envelope"></i>
+          <input
+            type="text"
+            name="userEmail"
+            id="userEmail"
+            placeholder="Email"
+            formControlName="email"
+          />
+        </div>
       </div>
-      <div class="input-field">
-        <i class="fa-solid fa-envelope"></i>
-        <input
-          type="text"
-          name="userEmail"
-          id="userEmail"
-          placeholder="Email"
-        />
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.email.invalid &&
+          (form.controls.email.dirty || form.controls.email.touched)
+        "
+      >
+        * Email is required
       </div>
-      <div class="input-field">
-        <i class="fa-solid fa-lock"></i>
-        <input
-          type="text"
-          name="userPassword"
-          id="userPassworde"
-          placeholder="Password"
-        />
+      <div class="input-group-item">
+        <span>*</span>
+        <div
+          class="input-field"
+          [ngClass]="
+            form.controls.password.invalid &&
+            (form.controls.password.dirty || form.controls.password.touched)
+              ? 'input-field-invalid'
+              : ''
+          "
+        >
+          <i class="fa-solid fa-lock"></i>
+          <input
+            type="password"
+            name="userPassword"
+            id="userPassworde"
+            placeholder="Password"
+            formControlName="password"
+          />
+        </div>
       </div>
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.password.invalid &&
+          (form.controls.password.dirty || form.controls.password.touched)
+        "
+      >
+        * Password is required
+      </div>
+      <div class="input-group-item">
+        <span>*</span>
+        <div
+          class="input-field"
+          [ngClass]="
+            form.controls.firstname.invalid &&
+            (form.controls.firstname.dirty || form.controls.firstname.touched)
+              ? 'input-field-invalid'
+              : ''
+          "
+        >
+          <i class="fa-solid fa-user"></i>
+          <input
+            type="text"
+            name="firstname"
+            id="firstname"
+            placeholder="First Name"
+            formControlName="firstname"
+          />
+        </div>
+      </div>
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.firstname.invalid &&
+          (form.controls.firstname.dirty || form.controls.firstname.touched)
+        "
+      >
+        * First Name is required
+      </div>
+      <div class="input-group-item">
+        <span>*</span>
+        <div
+          class="input-field"
+          [ngClass]="
+            form.controls.lastname.invalid &&
+            (form.controls.lastname.dirty || form.controls.lastname.touched)
+              ? 'input-field-invalid'
+              : ''
+          "
+        >
+          <i class="fa-solid fa-user"></i>
+          <input
+            type="text"
+            name="lastname"
+            id="lastname"
+            placeholder="Last Name"
+            formControlName="lastname"
+          />
+        </div>
+      </div>
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.lastname.invalid &&
+          (form.controls.lastname.dirty || form.controls.lastname.touched)
+        "
+      >
+        * Last Name is required
+      </div>
+      <div class="input-group-item">
+        <span>*</span>
+        <div
+          class="input-field"
+          [ngClass]="
+            form.controls.country.invalid &&
+            (form.controls.country.dirty || form.controls.country.touched)
+              ? 'input-field-invalid'
+              : ''
+          "
+        >
+          <i class="fa-solid fa-user"></i>
+          <select
+            type="text"
+            name="country"
+            id="country"
+            formControlName="country"
+          >
+            <option value="" disabled selected>--Select Country--</option>
+            <option
+              *ngFor="let country of countries$ | async"
+              [value]="country.name"
+            >
+              {{ country.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.country.invalid &&
+          (form.controls.country.dirty || form.controls.country.touched)
+        "
+      >
+        * Country is required
+      </div>
+      <div class="input-group-item">
+        <span>*</span>
+        <div
+          class="input-field"
+          [ngClass]="
+            form.controls.notification.invalid &&
+            (form.controls.notification.dirty ||
+              form.controls.notification.touched)
+              ? 'input-field-invalid'
+              : ''
+          "
+        >
+          <i class="fa-solid fa-user"></i>
+          <select
+            type="text"
+            name="notification"
+            id="notification"
+            formControlName="notification"
+          >
+            <option value="" disabled selected>--Select Notification--</option>
+            <option value="email">Email</option>
+            <option value="inApp">In App Notification</option>
+          </select>
+        </div>
+      </div>
+      <div
+      class="error-message"
+      *ngIf="
+        form.controls.notification.invalid &&
+        (form.controls.notification.dirty || form.controls.notification.touched)
+      "
+    >
+      * Notification is required
+    </div>
+      <p class="required-fields">* Required Fields</p>
       <p>Sign In <a [routerLink]="['/auth/login']">Click Here!</a></p>
       <p>Lost Password <a href="">Click Here!</a></p>
     </div>
     <div class="btn-field">
-      <button type="button" class="button button-blue">Sign Up</button>
-      <button type="button" class="button button-disable">Sign In</button>
+      <button
+        type="submit"
+        class="button button-blue"
+        [ngClass]="
+          form.invalid && (form.touched || form.dirty) ? 'button-disable' : ''
+        "
+        [disabled]="form.invalid && (form.touched || form.dirty)"
+      >
+        Sign Up
+      </button>
     </div>
   </form>
 </div>
-
