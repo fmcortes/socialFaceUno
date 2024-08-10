@@ -37,6 +37,25 @@ export const loginEffect = createEffect(
   { functional: true }
 );
 
+export const logOutEffect = createEffect(
+  (
+    action$ = inject(Actions),
+    persistanceService = inject(PersistanceService)
+  ) => {
+    return action$.pipe(
+      ofType(authActions.logout),
+      map(() => {
+        return authActions.logoutSuccess();
+      }),
+      catchError((errorResponse) => {
+        return of(
+          authActions.logoutFailure({ errors: errorResponse.error.errors })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
 
 export const registerEffect = createEffect(
   (
@@ -112,7 +131,7 @@ export const forgotEffect = createEffect(
 export const redirectAfterForgetEffect = createEffect(
   (actions$ = inject(Actions), router = inject(Router)) => {
     return actions$.pipe(
-      ofType(authActions.forgotPasswordSuccess),
+      ofType(authActions.forgotPasswordSuccess, authActions.logoutSuccess),
       tap(() => {
         router.navigateByUrl('auth/login');
       })

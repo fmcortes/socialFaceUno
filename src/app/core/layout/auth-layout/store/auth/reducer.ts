@@ -49,6 +49,22 @@ export const authFeature = createFeature({
       currentUser: null,
     })),
 
+    on(authActions.logout, (state) => ({
+      ...state,
+      isSubmiting: true,
+      validationErrors: null,
+    })),
+    on(authActions.logoutSuccess, (state) => ({
+      ...state,
+      isSubmiting: false,
+      currentUser: null,
+    })),
+    on(authActions.loginFailure, (state, action) => ({
+      ...state,
+      isSubmiting: false,
+      validationErrors: action.errors,
+    })),
+
     on(routerNavigatedAction, (state) => ({ ...state, validationErrors: null }))
   ),
 });
