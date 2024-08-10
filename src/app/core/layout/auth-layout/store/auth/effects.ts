@@ -7,6 +7,7 @@ import { authActions } from './actions';
 import { AuthReponseInterface } from '../../../../types/authResponse.interface';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
 
 export const loginEffect = createEffect(
   (
@@ -19,9 +20,10 @@ export const loginEffect = createEffect(
       switchMap(({ request }) => {
         return authService.login(request).pipe(
           map((loginResponse: AuthReponseInterface) => {
-            persistanceService.set('accessToken', loginResponse.accessToken);
-
             const { user: currentUser } = loginResponse;
+
+            persistanceService.set('accessToken', loginResponse.accessToken);
+            persistanceService.set('email', currentUser.email);
 
             return authActions.loginSuccess({ currentUser });
           }),
@@ -45,7 +47,8 @@ export const logOutEffect = createEffect(
     return action$.pipe(
       ofType(authActions.logout),
       map(() => {
-        persistanceService.delete('accessToken')
+        persistanceService.delete('accessToken');
+        persistanceService.delete('email');
         return authActions.logoutSuccess();
       }),
       catchError((errorResponse) => {
@@ -142,4 +145,37 @@ export const redirectAfterForgetEffect = createEffect(
     functional: true,
     dispatch: false,
   }
+);
+
+export const getCurrentUserEffect = createEffect(
+  (
+    actions$ = inject(Actions),
+    authService = inject(AuthService),
+    persistanceService = inject(PersistanceService)
+  ) => {
+    return actions$.pipe(
+      ofType(authActions.getCurrentUser),
+      switchMap(() => {
+        const email = persistanceService.get('email');
+        if (!email) {
+          return of(
+            authActions.getCurrentUserFailure({
+              errors: { 'message': ['missing token'] },
+            })
+          );
+        }
+        return authService.getCurrentUser(email as string).pipe(
+          map((currentUser: CurrentUserInterface) => {
+            return authActions.getCurrentUserSuccess({ currentUser });
+          }),
+          catchError((errorResponse: HttpErrorResponse) => {
+            return of(authActions.getCurrentUserFailure({
+              errors: errorResponse.error
+            }));
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
 );

@@ -14,10 +14,6 @@ export class AuthService {
     return response.user;
   }
 
-  getPosts(): Observable<any> {
-    return this.httpClient.get<any>('https://fakefaceapi.onrender.com/posts');
-  }
-
   login(data: LoginRequestInterface): Observable<AuthReponseInterface> {
     const url = 'https://fakefaceapi.onrender.com' + '/login';
     return this.httpClient.post<AuthReponseInterface>(url, data);
@@ -31,5 +27,14 @@ export class AuthService {
   forgotPassword(email: string): Observable<string> {
     const url = 'https://fakefaceapi.onrender.com/forgotpasswords';
     return this.httpClient.post<string>(url, { email });
+  }
+
+  getCurrentUser(email: string): Observable<CurrentUserInterface> {
+    const url = `https://fakefaceapi.onrender.com/users?email=${email}`;
+    return this.httpClient.get<CurrentUserInterface[]>(url).pipe(
+      map((currentUsersResponse) => {
+        return currentUsersResponse[0];
+      })
+    );
   }
 }
