@@ -25,6 +25,9 @@ MIT
 @ngrx/store-devtools
 MIT
 
+ngx-infinite-scroll
+MIT
+
 rxjs
 Apache-2.0
                                Apache License
