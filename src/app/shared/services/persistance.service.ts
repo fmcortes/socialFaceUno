@@ -17,14 +17,11 @@ export class PersistanceService {
       const localStorageItem = localStorage.getItem(key);
       return localStorageItem ? JSON.parse(localStorageItem) : null;
     } catch (error) {
-      console.error('Error getting to local storage', error);
       return null;
     }
   }
 
-  delete(key: string): void {
-    console.warn('delete', key);
-    
+  delete(key: string): void {    
     localStorage.removeItem(key);
   }
 }

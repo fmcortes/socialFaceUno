@@ -1,5 +1,5 @@
 <div class="write-post-container">
-  <app-profile-picture>
+  <app-profile-picture *ngIf="profileUser" [userProfile]="profileUser">
     <small>Public <i class="fa-solid fa-caret-down"></i></small>
   </app-profile-picture>
   <div class="post-input-container">
