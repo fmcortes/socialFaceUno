@@ -1,4 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AuthFacade } from '../auth-layout/store/auth/auth-facade';
 
 @Component({
   selector: 'app-settings',
@@ -8,9 +9,15 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class SettingsComponent {
   @ViewChild('settingsMenu') settingsMenu: ElementRef<HTMLElement> | undefined;
 
+  constructor(private authFacade: AuthFacade) {}
+
   settingsMenuToggle(): void {
     this.settingsMenu?.nativeElement.classList.toggle('settings-menu-height');
   }
 
-  darkMode():void {}
+  logout(): void {
+    this.authFacade.logOut();
+  }
+
+  darkMode(): void {}
 }
