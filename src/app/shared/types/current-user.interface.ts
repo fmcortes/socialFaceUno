@@ -6,6 +6,6 @@ export interface CurrentUserInterface {
   notification: string;
   accesToken: string;
   username: string;
-  id: string;
+  id: number;
   image: string | null;
 }

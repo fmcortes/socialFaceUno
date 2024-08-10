@@ -1,38 +1,43 @@
-@import '../../../../../scss/variables/colors';
+@import "../../../../../scss/variables/colors";
 
-.post-container {
-  width: 100%;
-  background: $white;
-  border-radius: 6px;
-  padding: 20px;
-  color: $right-side-color;
-  margin: 20px 0;
-}
-
-.post-text {
-  color: $dusty-gray;
-  margin: 15px 0;
-  font-size: 15px;
-}
-
-.post-text span {
-  color: $right-side-color;
-  font-weight: 500;
-}
-
-.post-text a {
-  color: $blue;
-  text-decoration: none;
-}
-
-.post-img {
-  width: 100%;
-  border-radius: 4px;
-  margin-bottom: 5px;
-}
-
-.post-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.post {
+  &-container {
+    width: 100%;
+    background: $white;
+    border-radius: 6px;
+    padding: 20px;
+    color: $right-side-color;
+    margin: 20px 0;
+  }
+  &-title {
+    color: $blue;
+  }
+  &-text {
+    color: $black;
+    margin: 15px 0;
+    font-size: 1rem;
+    & span {
+      color: $right-side-color;
+      font-weight: 500;
+    }
+  }
+  &-tag-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+  &-tag {
+    color: $blue;
+    text-decoration: none;
+  }
+  &-img {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  &-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }

@@ -1,7 +1,7 @@
 <div class="user-profile">
-  <img src="../assets/images/profile-pic.png" alt="" />
+  <img [src]="userProfile?.image" alt="" />
   <div>
-    <p>Jhon Nicholson</p>
+    <p>{{userProfile?.username}}</p>
     <a [routerLink]="['/home/profile']" *ngIf="showProfileLink">See your profile</a>
     <ng-content></ng-content>
   </div>
