@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthLayoutComponent } from './core/layout/auth-layout/auth-layout.component';
 import { MainLayoutComponent } from './core/layout/main-layout/main-layout.component';
+import { authGuard } from './core/providers/auth.guard';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
   {
     path: 'home',
     component: MainLayoutComponent,
+    canActivate: [authGuard],
     children: [
       {
         path: '',
@@ -45,14 +47,17 @@ const routes: Routes = [
       },
       {
         path: 'profile',
-        loadChildren: () => import('./routes/home/profile/profile.module').then((m) => m.ProfileModule),
+        loadChildren: () =>
+          import('./routes/home/profile/profile.module').then(
+            (m) => m.ProfileModule
+          ),
       },
     ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

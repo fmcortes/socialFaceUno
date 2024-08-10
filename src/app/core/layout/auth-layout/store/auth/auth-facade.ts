@@ -19,4 +19,8 @@ export class AuthFacade {
   forgotPassword(email: string): void {
     this.store.dispatch(authActions.forgotPassword({ request: email }));
   }
+
+  logOut(): void {
+    this.store.dispatch(authActions.logout());
+  }
 }
