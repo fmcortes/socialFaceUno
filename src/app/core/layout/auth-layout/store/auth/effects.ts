@@ -45,6 +45,7 @@ export const logOutEffect = createEffect(
     return action$.pipe(
       ofType(authActions.logout),
       map(() => {
+        persistanceService.delete('accessToken')
         return authActions.logoutSuccess();
       }),
       catchError((errorResponse) => {
