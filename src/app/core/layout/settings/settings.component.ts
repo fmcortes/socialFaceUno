@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { AuthFacade } from '../auth-layout/store/auth/auth-facade';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -8,6 +9,11 @@ import { AuthFacade } from '../auth-layout/store/auth/auth-facade';
 })
 export class SettingsComponent {
   @ViewChild('settingsMenu') settingsMenu: ElementRef<HTMLElement> | undefined;
+
+  data$ = combineLatest({
+    currentUser: this.authFacade.currentUser$
+  })
+
 
   constructor(private authFacade: AuthFacade) {}
 

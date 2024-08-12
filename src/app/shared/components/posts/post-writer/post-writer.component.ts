@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthFacade } from 'src/app/core/layout/auth-layout/store/auth/auth-facade';
-import { ProfileInterface } from './types/profile.interface';
+import { ProfileInterface } from '../types/profile.interface';
 
 @Component({
   selector: 'app-post-writer',

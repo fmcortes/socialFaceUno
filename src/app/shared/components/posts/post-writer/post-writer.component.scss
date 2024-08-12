@@ -1,0 +1,31 @@
+@import '../../../../../scss/variables/colors';
+@import '../../../../../scss/mixings/media-queries';
+
+.write-post-container {
+  width: 100%;
+  background: $white;
+  border-radius: 6px;
+  padding: 20px;
+  color: $right-side-color;
+}
+
+.post-input-container {
+  padding-left: 55px;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  @include tablet {
+    padding-left: 0;
+  }
+}
+
+.post-input-container textarea,
+input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  resize: none;
+}

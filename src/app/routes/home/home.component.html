@@ -1,7 +1,6 @@
 <div class="container">
   <div class="left-sidebar">
     <div class="imp-links">
-      <a href="#"><img src="assets/images/news.png" alt="" />Latest News</a>
       <a href="#"><img src="assets/images/friends.png" alt="" />Friends</a>
       <a href="#"><img src="assets/images/group.png" alt="" />Groups</a>
     </div>
@@ -23,12 +22,14 @@
   </div>
   <!-- Main content -->
   <div class="main-content">
-    <app-story-gallery></app-story-gallery>
+    <ng-container *ngIf="data$ | async as data">
+      <app-story-gallery></app-story-gallery>
 
-    <app-post-writer></app-post-writer>
-
-    <app-post-list></app-post-list>
-   
+      <app-post-list
+        [postList]="data.posts"
+        (currentPageEvent)="getPostData($event)"
+      ></app-post-list>
+    </ng-container>
   </div>
   <!-- Rigth Side Bar -->
   <div class="right-sidebar">

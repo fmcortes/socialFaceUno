@@ -1,0 +1,18 @@
+<div class="write-post-container">
+  <app-profile-picture *ngIf="profileUser" [userProfile]="profileUser">
+    <small>Public <i class="fa-solid fa-caret-down"></i></small>
+  </app-profile-picture>
+  <div class="post-input-container">
+    <form action="">
+      <input type="text" placeholder="Title" />
+
+      <textarea
+        name=""
+        id=""
+        rows="3"
+        placeholder="What's on your mind, Jhon"
+      ></textarea>
+      <button type="submit" class="button button-small">Post</button>
+    </form>
+  </div>
+</div>
