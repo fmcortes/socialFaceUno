@@ -4,34 +4,28 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { StoryGalleryComponent } from './components/story-gallery/story-gallery.component';
-import { PostComponent } from './components/post/post.component';
-import { PostWriterComponent } from './components/post/post-writer.component';
+
 import { SharedModule } from 'src/app/shared/shared.module';
-import { PostListComponent } from './components/post/post-list.component';
-import { PostService } from './components/post/services/posts.service';
+import { PostListComponent } from '../../shared/components/posts/post-list/post-list.component';
+
 import { StoreModule } from '@ngrx/store';
-import { postFeature } from './components/post/store/reducer';
 import { EffectsModule } from '@ngrx/effects';
 
-import * as postEffects from './components/post/store/effects';
-import { PostFacade } from './components/post/store/posts-facade';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import * as postEffects from '../../shared/components/posts/store/effects';
+
+import { PostFacade } from '../../shared/components/posts/store/posts-facade';
+import { postFeature } from '../../shared/components/posts/store/reducer';
+import { PostService } from '../../shared/services/posts.service';
 
 @NgModule({
-  declarations: [
-    HomeComponent,
-    StoryGalleryComponent,
-    PostComponent,
-    PostWriterComponent,
-    PostListComponent,
-  ],
+  declarations: [HomeComponent, StoryGalleryComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,
     SharedModule,
     StoreModule.forFeature(postFeature),
     EffectsModule.forFeature([postEffects]),
-    InfiniteScrollModule
+
   ],
   providers: [PostService, PostFacade],
 })

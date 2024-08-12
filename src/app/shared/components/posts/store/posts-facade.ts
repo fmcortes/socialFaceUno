@@ -2,10 +2,12 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { postActions } from './actions';
 import { filter, Observable } from 'rxjs';
-import { PostInterface } from '../types/post.interface';
+
 import { selectPostData } from './reducer';
 import { selectCurrentUser } from 'src/app/core/layout/auth-layout/store/auth/reducer';
+import { PostInterface } from '../types/post.interface';
 import { PostRequestInterface } from '../types/post-request.interface';
+
 
 @Injectable()
 export class PostFacade {

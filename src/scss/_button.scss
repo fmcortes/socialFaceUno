@@ -19,12 +19,27 @@
   }
   &-load-more {
     display: block;
-  margin: auto;
-  cursor: pointer;
-  padding: 5px 10px;
-  border: 1px solid #9a9a9a;
-  color: #626262;
-  background: transparent;
-  border-radius: 4px;
+    margin: auto;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #9a9a9a;
+    color: #626262;
+    background: transparent;
+    border-radius: 4px;
+  }
+
+  &-small {
+    background: $blue;
+    border: 0;
+    outline: 0;
+    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center;
+    color: #fff;
+    border-radius: 3px;
+    margin-left: 10px;
+    cursor: pointer;
+    justify-content: center;
+    width: 100px;
   }
 }

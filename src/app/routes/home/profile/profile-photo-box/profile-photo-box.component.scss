@@ -1,0 +1,23 @@
+@import "../../../../../scss/variables/colors";
+@import "../../../../../scss/variables/font";
+
+.photo-box {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-gap: 10px;
+  margin-top: 15px;
+  & div img {
+    width: 100%;
+    cursor: pointer;
+  }
+  &-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &-link {
+      text-decoration: none;
+      color: $blue;
+      font-size: $small;
+    }
+  }
+}

@@ -8,6 +8,15 @@ import { AuthReponseInterface } from '../../../../types/authResponse.interface';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
+import {
+  coverPhotosArray,
+  profileImagesArray,
+  userPhotosArray,
+} from 'src/app/shared/utils/fakeImageObjects';
+
+const getRandomNumber = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
 
 export const loginEffect = createEffect(
   (
@@ -21,6 +30,18 @@ export const loginEffect = createEffect(
         return authService.login(request).pipe(
           map((loginResponse: AuthReponseInterface) => {
             const { user: currentUser } = loginResponse;
+            currentUser.photos = [...userPhotosArray];
+            currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
+
+            console.warn('cover', currentUser.cover);
+            
+
+            // Generate fake images for friends
+            currentUser.friends?.forEach((friend) => {
+              if (!friend.image) {
+                friend.image = profileImagesArray[getRandomNumber(0, 10)];
+              }
+            });
 
             persistanceService.set('accessToken', loginResponse.accessToken);
             persistanceService.set('email', currentUser.email);
@@ -72,11 +93,12 @@ export const registerEffect = createEffect(
       switchMap(({ request }) => {
         return authService.register(request).pipe(
           map((registerResponse: AuthReponseInterface) => {
-            // we can set the token to local storage
-            // window.localStorage.setItem('accessToken', currentUser.token)
             persistanceService.set('accessToken', registerResponse.accessToken);
 
             const { user: currentUser } = registerResponse;
+             //Set mock user pictures
+             currentUser.photos = [...userPhotosArray];
+             currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
 
             return authActions.registerSuccess({ currentUser });
           }),
@@ -160,18 +182,31 @@ export const getCurrentUserEffect = createEffect(
         if (!email) {
           return of(
             authActions.getCurrentUserFailure({
-              errors: { 'message': ['missing token'] },
+              errors: { message: ['missing token'] },
             })
           );
         }
         return authService.getCurrentUser(email as string).pipe(
           map((currentUser: CurrentUserInterface) => {
+            //Set mock user pictures
+            currentUser.photos = [...userPhotosArray];
+            currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
+            console.warn('cover', currentUser.cover);
+
+            // Generate fake images for friends
+            currentUser.friends?.forEach((friend) => {
+              if (!friend.image) {
+                friend.image = profileImagesArray[getRandomNumber(0, 10)];
+              }
+            });
             return authActions.getCurrentUserSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            return of(authActions.getCurrentUserFailure({
-              errors: errorResponse.error
-            }));
+            return of(
+              authActions.getCurrentUserFailure({
+                errors: errorResponse.error,
+              })
+            );
           })
         );
       })

@@ -1,8 +1,17 @@
 <div class="user-profile">
-  <img [src]="userProfile?.image" alt="" />
+  <img
+    [src]="
+      userProfile?.image
+        ? userProfile?.image
+        : 'assets/images/user-default-2.png'
+    "
+    alt=""
+  />
   <div>
-    <p>{{userProfile?.username}}</p>
-    <a [routerLink]="['/home/profile']" *ngIf="showProfileLink">See your profile</a>
+    <p>{{ userProfile?.username }}</p>
+    <a [routerLink]="['/home/profile']" *ngIf="showProfileLink"
+      >See your profile</a
+    >
     <ng-content></ng-content>
   </div>
 </div>
