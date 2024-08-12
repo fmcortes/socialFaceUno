@@ -1,0 +1,42 @@
+@import "../../../../../scss/variables/colors";
+@import "../../../../../scss/variables/font";
+@import '../../../../../scss/mixings/media-queries';
+
+.friend-list {
+  &-title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include tablet {
+      flex-direction: column;
+    }
+    &-link {
+      text-decoration: none;
+      color: $blue;
+      font-size: $small;
+    }
+  }
+  &-box {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 15px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    list-style: none;
+    @include tablet {
+      grid-gap: 10px;
+    }
+  }
+  &-image-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100px;
+    height: 100px;
+    & img {
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+    }
+  }
+}

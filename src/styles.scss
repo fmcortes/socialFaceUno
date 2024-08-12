@@ -62,7 +62,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(74, 74, 74, .8);
+  background: rgba(74, 74, 74, 0.8);
   z-index: 10;
 }
 
@@ -87,22 +87,7 @@ body {
   font-size: 12px;
 }
 
-.post-input-container {
-  padding-left: 55px;
-  padding-top: 20px;
-  @include tablet {
-    padding-left: 0;
-  }
-}
 
-.post-input-container textarea {
-  width: 100%;
-  border: 0;
-  outline: 0;
-  border-bottom: 1px solid #ccc;
-  background: transparent;
-  resize: none;
-}
 
 .add-post-links {
   display: flex;
@@ -134,15 +119,10 @@ body {
   }
 }
 
-
-
 .user-profile span {
   font-size: 13px;
   color: #626262;
 }
-
-
-
 
 .activity-icons div img {
   width: 18px;

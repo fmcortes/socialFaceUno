@@ -8,4 +8,8 @@ export interface CurrentUserInterface {
   username: string;
   id: number;
   image: string | null;
+  friends: Partial<CurrentUserInterface>[];
+  photos: string[];
+  cover?:string;
+
 }
