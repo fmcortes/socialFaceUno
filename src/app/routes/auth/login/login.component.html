@@ -1,88 +1,91 @@
-<div class="form-box">
-  <h1>Sign In</h1>
-  <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="input-group">
-      <div class="input-group-item">
-        <span>*</span>
+<ng-container *ngIf="data$ | async as data">
+  <div class="form-box">
+    <app-error *ngIf="data.errors" [backendErrors]="data.errors" (clearErrors)="onClearErrors()"></app-error>
+    <h1>Sign In</h1>
+    <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="input-group">
+        <div class="input-group-item">
+          <span>*</span>
+          <div
+            class="input-field"
+            [ngClass]="
+              form.controls.email.invalid &&
+              (form.controls.email.dirty || form.controls.email.touched)
+                ? 'input-field-invalid'
+                : ''
+            "
+          >
+            <i class="fa-solid fa-envelope"></i>
+            <input
+              type="text"
+              name="userEmail"
+              id="userEmail"
+              placeholder="Email"
+              formControlName="email"
+            />
+          </div>
+        </div>
         <div
-          class="input-field"
-          [ngClass]="
+          class="error-message"
+          *ngIf="
             form.controls.email.invalid &&
             (form.controls.email.dirty || form.controls.email.touched)
-              ? 'input-field-invalid'
-              : ''
           "
         >
-          <i class="fa-solid fa-envelope"></i>
-          <input
-            type="text"
-            name="userEmail"
-            id="userEmail"
-            placeholder="Email"
-            formControlName="email"
-          />
+          * Email is required
         </div>
-      </div>
-      <div
-        class="error-message"
-        *ngIf="
-          form.controls.email.invalid &&
-          (form.controls.email.dirty || form.controls.email.touched)
-        "
-      >
-        * Email is required
-      </div>
-      <div class="input-group-item">
-        <span>*</span>
+        <div class="input-group-item">
+          <span>*</span>
+          <div
+            class="input-field"
+            [ngClass]="
+              form.controls.password.invalid &&
+              (form.controls.password.dirty || form.controls.password.touched)
+                ? 'input-field-invalid'
+                : ''
+            "
+          >
+            <i class="fa-solid fa-lock"></i>
+            <input
+              type="password"
+              name="userPassword"
+              id="userPassword"
+              placeholder="Password"
+              formControlName="password"
+            />
+          </div>
+        </div>
         <div
-          class="input-field"
-          [ngClass]="
+          class="error-message"
+          *ngIf="
             form.controls.password.invalid &&
             (form.controls.password.dirty || form.controls.password.touched)
-              ? 'input-field-invalid'
-              : ''
           "
         >
-          <i class="fa-solid fa-lock"></i>
-          <input
-            type="password"
-            name="userPassword"
-            id="userPassword"
-            placeholder="Password"
-            formControlName="password"
-          />
+          * Password is required
         </div>
+        <p class="required-fields">* Required Fields</p>
+        <p>
+          Don't have an account?
+          <a [routerLink]="['/auth/register']">Click Here!</a>
+        </p>
+        <p>
+          Lost Your Password
+          <a [routerLink]="['/auth/forgot-password']">Click Here!</a>
+        </p>
       </div>
-      <div
-        class="error-message"
-        *ngIf="
-          form.controls.password.invalid &&
-          (form.controls.password.dirty || form.controls.password.touched)
-        "
-      >
-        * Password is required
+      <div class="btn-field">
+        <button
+          type="submit"
+          class="button button-blue"
+          [ngClass]="
+            form.invalid && (form.touched || form.dirty) ? 'button-disable' : ''
+          "
+          [disabled]="form.invalid && (form.touched || form.dirty)"
+        >
+          Sign In
+        </button>
       </div>
-      <p class="required-fields">* Required Fields</p>
-      <p>
-        Don't have an account?
-        <a [routerLink]="['/auth/register']">Click Here!</a>
-      </p>
-      <p>
-        Lost Your Password
-        <a [routerLink]="['/auth/forgot-password']">Click Here!</a>
-      </p>
-    </div>
-    <div class="btn-field">
-      <button
-        type="submit"
-        class="button button-blue"
-        [ngClass]="
-          form.invalid && (form.touched || form.dirty) ? 'button-disable' : ''
-        "
-        [disabled]="form.invalid && (form.touched || form.dirty)"
-      >
-        Sign In
-      </button>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+</ng-container>

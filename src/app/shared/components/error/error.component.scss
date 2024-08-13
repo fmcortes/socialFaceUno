@@ -1,0 +1,41 @@
+@import "../../../../scss/variables/colors";
+@import "../../../../scss/variables/font";
+
+.error {
+  &-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: $w3Red;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  &-header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  &-button {
+    background-color: $w3Red;
+    cursor: pointer;
+    border-radius: 0.5px;
+    color: $white;
+    outline: none;
+    border: none;
+    &:hover {
+      border: solid 1px $white;
+    }
+  }
+  &-header {
+    color: $white;
+    font-size: $large;
+  }
+  &-message {
+    list-style: none;
+    color: $white;
+    font-size: $medium;
+    padding-bottom: 0.5rem;
+  }
+}
