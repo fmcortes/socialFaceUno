@@ -32,10 +32,6 @@ export const loginEffect = createEffect(
             const { user: currentUser } = loginResponse;
             currentUser.photos = [...userPhotosArray];
             currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
-
-            console.warn('cover', currentUser.cover);
-            
-
             // Generate fake images for friends
             currentUser.friends?.forEach((friend) => {
               if (!friend.image) {
@@ -48,9 +44,11 @@ export const loginEffect = createEffect(
 
             return authActions.loginSuccess({ currentUser });
           }),
-          catchError((errorResponse) => {
+          catchError((errorResponse: HttpErrorResponse) => {
+            console.warn('errorResponse', errorResponse);
+
             return of(
-              authActions.loginFailure({ errors: errorResponse.error.errors })
+              authActions.loginFailure({ errors: errorResponse.error })
             );
           })
         );
@@ -72,7 +70,7 @@ export const logOutEffect = createEffect(
         persistanceService.delete('email');
         return authActions.logoutSuccess();
       }),
-      catchError((errorResponse) => {
+      catchError((errorResponse: HttpErrorResponse) => {
         return of(
           authActions.logoutFailure({ errors: errorResponse.error.errors })
         );
@@ -96,16 +94,16 @@ export const registerEffect = createEffect(
             persistanceService.set('accessToken', registerResponse.accessToken);
 
             const { user: currentUser } = registerResponse;
-             //Set mock user pictures
-             currentUser.photos = [...userPhotosArray];
-             currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
+            //Set mock user pictures
+            currentUser.photos = [...userPhotosArray];
+            currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
 
             return authActions.registerSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
               authActions.registerFailure({
-                errors: errorResponse.error.errors,
+                errors: errorResponse.error,
               })
             );
           })
@@ -122,6 +120,26 @@ export const redirectAfterRegisterEffect = createEffect(
       ofType(authActions.registerSuccess, authActions.loginSuccess),
       tap(() => {
         router.navigateByUrl('/home');
+      })
+    );
+  },
+  {
+    functional: true,
+    dispatch: false,
+  }
+);
+
+export const redirectAfterGetCurrentUserFails = createEffect(
+  (
+    actions$ = inject(Actions),
+    router = inject(Router),
+    persistanceService = inject(PersistanceService)
+  ) => {
+    return actions$.pipe(
+      ofType(authActions.getCurrentUserFailure),
+      tap(() => {
+        persistanceService.delete('accessToken')
+        router.navigateByUrl('/auth/login');
       })
     );
   },
