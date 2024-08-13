@@ -79,6 +79,10 @@ export const authFeature = createFeature({
       isLoading: false,
       currentUser: null,
     })),
+    on(authActions.clearErrors, (state) => ({
+      ...state,
+      validationErrors: null,
+    })),
 
     on(routerNavigatedAction, (state) => ({ ...state, validationErrors: null }))
   ),

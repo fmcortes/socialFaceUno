@@ -6,31 +6,24 @@ import { PostListComponent } from './components/posts/post-list/post-list.compon
 import { PostComponent } from './components/posts/post-list/post.component';
 import { PostWriterComponent } from './components/posts/post-writer/post-writer.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-
-
-
+import { ErrorComponent } from './components/error/error.component';
 
 @NgModule({
   declarations: [
     ProfilePictureComponent,
     PostListComponent,
     PostComponent,
-    PostWriterComponent
+    PostWriterComponent,
+    ErrorComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    InfiniteScrollModule,
-  ],
-  exports:[
+  imports: [CommonModule, RouterModule, InfiniteScrollModule],
+  exports: [
     ProfilePictureComponent,
     PostListComponent,
     PostComponent,
-    PostWriterComponent
+    PostWriterComponent,
+    ErrorComponent,
   ],
-  providers: [
-
-
-  ]
+  providers: [],
 })
-export class SharedModule { }
+export class SharedModule {}

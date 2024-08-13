@@ -5,15 +5,20 @@ import { authActions } from './actions';
 import { RegisterRequestInterface } from 'src/app/core/types/register-request.interface';
 import { Observable } from 'rxjs';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
-import { selectCurrentUser } from './reducer';
+import { selectCurrentUser, selectValidationErrors } from './reducer';
+import { BackendErrorsInterface } from 'src/app/shared/types/backend-error.interface';
 
 @Injectable()
 export class AuthFacade {
   constructor(private store: Store) {}
 
-  get currentUser$():Observable<CurrentUserInterface | null | undefined> {
-    return this.store.select(selectCurrentUser)
-  } 
+  get currentUser$(): Observable<CurrentUserInterface | null | undefined> {
+    return this.store.select(selectCurrentUser);
+  }
+
+  get error$(): Observable<string | null> {
+    return this.store.select(selectValidationErrors);
+  }
 
   login(request: LoginRequestInterface): void {
     this.store.dispatch(authActions.login({ request }));
@@ -29,6 +34,10 @@ export class AuthFacade {
 
   logOut(): void {
     this.store.dispatch(authActions.logout());
+  }
+
+  clearErrors(): void {
+    this.store.dispatch(authActions.clearErrors())
   }
 
   getCurrentUser(): void {

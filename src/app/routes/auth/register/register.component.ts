@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { combineLatest } from 'rxjs';
 import { AuthFacade } from 'src/app/core/layout/auth-layout/store/auth/auth-facade';
 import { CountriesFacade } from 'src/app/core/layout/auth-layout/store/country/country-facade';
 import { RegisterRequestInterface } from 'src/app/core/types/register-request.interface';
@@ -16,7 +17,10 @@ export class RegisterComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  countries$ = this.countriesFacade.countries$;
+  data$ = combineLatest({
+    errors: this.authFacade.error$,
+    countries: this.countriesFacade.countries$,
+  });
 
   form = this.formBuilder.nonNullable.group({
     email: ['', Validators.required],
@@ -39,4 +43,9 @@ export class RegisterComponent implements OnInit {
 
     this.authFacade.register(request);
   }
+
+  onClearErrors(): void {
+    this.authFacade.clearErrors();
+  }
+
 }
