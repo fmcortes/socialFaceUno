@@ -1,11 +1,11 @@
 <div class="post-container">
   <div class="post-row">
     <app-profile-picture [userProfile]="post?.author">
-      <span>{{ post?.createdAt | date }}</span>
     </app-profile-picture>
     <a href=""><i class="fas fa-ellipsis-v"></i></a>
   </div>
   <h2 class="post-title">{{post?.title}}</h2>
+  <span>{{ post?.createdAt | date }}</span>
   <p class="post-text">
     {{ post?.body }}
   </p>

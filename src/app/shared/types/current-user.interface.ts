@@ -11,5 +11,4 @@ export interface CurrentUserInterface {
   friends: Partial<CurrentUserInterface>[];
   photos: string[];
   cover?:string;
-
 }

@@ -8,7 +8,6 @@ import { selectCurrentUser } from 'src/app/core/layout/auth-layout/store/auth/re
 import { PostInterface } from '../types/post.interface';
 import { PostRequestInterface } from '../types/post-request.interface';
 
-
 @Injectable()
 export class PostFacade {
   constructor(private store: Store) {}
@@ -33,4 +32,15 @@ export class PostFacade {
         }
       });
   }
+
+  fetchPostsByUserId(page: number, userId: number) {
+    this.store.dispatch(
+      postActions.getPostsByUserId({ request: { userId, page } })
+    );
+  }
+
+  createPost(post: PostInterface) {
+    this.store.dispatch(postActions.createPosts({request: post}))
+  }
+
 }

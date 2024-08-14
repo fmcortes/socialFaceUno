@@ -1,14 +1,19 @@
 <div class="write-post-container">
   <app-profile-picture *ngIf="profileUser" [userProfile]="profileUser">
-    <small>Public <i class="fa-solid fa-caret-down"></i></small>
   </app-profile-picture>
   <div class="post-input-container">
-    <form action="">
-      <input type="text" placeholder="Title" />
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input
+        type="text"
+        placeholder="Title"
+        id="title"
+        formControlName="title"
+      />
 
       <textarea
-        name=""
-        id=""
+        name="body"
+        id="body"
+        formControlName="body"
         rows="3"
         placeholder="What's on your mind, Jhon"
       ></textarea>

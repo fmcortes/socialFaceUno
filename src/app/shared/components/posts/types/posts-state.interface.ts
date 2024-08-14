@@ -3,6 +3,6 @@ import { PostInterface } from "./post.interface"
 
 export interface PostsStateInterface {
   isLoading: boolean
-  error: BackendErrorsInterface | null
+  error: string | null
   data: PostInterface[] | []
 }

@@ -46,9 +46,9 @@ const routes: Routes = [
           import('./routes/home/home.module').then((m) => m.HomeModule),
       },
       {
-        path: 'profile',
+        path: 'profile/:slug',
         loadChildren: () =>
-          import('./routes/home/profile/profile.module').then(
+          import('./routes/home/routes/profile/profile.module').then(
             (m) => m.ProfileModule
           ),
       },

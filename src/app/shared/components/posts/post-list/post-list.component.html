@@ -1,6 +1,6 @@
-<ng-container *ngIf="data$ | async as data">
-  <ul class="post-list" *ngIf="data.posts" infinite-scroll (scrolled)="onScrollDown()">
-    <li class="post-list-item" *ngFor="let post of data.posts">
+<ng-container *ngIf="postList">
+  <ul class="post-list"  infinite-scroll (scrolled)="onScrollDown()">
+    <li class="post-list-item" *ngFor="let post of postList">
       <app-post [post]="post"></app-post>
     </li>
   </ul>
