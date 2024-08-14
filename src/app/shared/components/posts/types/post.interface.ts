@@ -15,4 +15,5 @@ export interface PostInterface {
   author: Partial<CurrentUserInterface>;
   image: string;
   userId?: number;
+  id?: number;
 }

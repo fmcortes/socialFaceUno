@@ -32,7 +32,7 @@ export class PostService {
     );
   }
 
-  getPostByUserId(page: number, userId: number) : Observable<PostInterface[]> {
+  getPostByUserId(page: number, userId: number): Observable<PostInterface[]> {
     const url = `https://fakefaceapi.onrender.com/posts?_page=${page}&author.id=${userId}`;
     return this.httpClient.get<PostInterface[]>(url).pipe(
       map((posts) => {
@@ -45,9 +45,8 @@ export class PostService {
     );
   }
 
-  createPost(post: PostInterface) : Observable<PostInterface> {
+  createPost(post: PostInterface): Observable<PostInterface> {
     const url = `https://fakefaceapi.onrender.com/posts`;
-    return this.httpClient.post<PostInterface>(url,{post})
+    return this.httpClient.post<PostInterface>(url, post);
   }
-
 }
