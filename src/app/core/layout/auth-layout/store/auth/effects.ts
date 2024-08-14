@@ -8,15 +8,6 @@ import { AuthReponseInterface } from '../../../../types/authResponse.interface';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
-import {
-  coverPhotosArray,
-  profileImagesArray,
-  userPhotosArray,
-} from 'src/app/shared/utils/fakeImageObjects';
-
-const getRandomNumber = (min: number, max: number) => {
-  return Math.floor(Math.random() * (max - min)) + min;
-};
 
 export const loginEffect = createEffect(
   (
@@ -30,23 +21,12 @@ export const loginEffect = createEffect(
         return authService.login(request).pipe(
           map((loginResponse: AuthReponseInterface) => {
             const { user: currentUser } = loginResponse;
-            currentUser.photos = [...userPhotosArray];
-            currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
-            // Generate fake images for friends
-            currentUser.friends?.forEach((friend) => {
-              if (!friend.image) {
-                friend.image = profileImagesArray[getRandomNumber(0, 10)];
-              }
-            });
-
             persistanceService.set('accessToken', loginResponse.accessToken);
             persistanceService.set('email', currentUser.email);
 
             return authActions.loginSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
-            console.warn('errorResponse', errorResponse);
-
             return of(
               authActions.loginFailure({ errors: errorResponse.error })
             );
@@ -95,8 +75,8 @@ export const registerEffect = createEffect(
 
             const { user: currentUser } = registerResponse;
             //Set mock user pictures
-            currentUser.photos = [...userPhotosArray];
-            currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
+            /* currentUser.photos = [...userPhotosArray];
+            currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)]; */
 
             return authActions.registerSuccess({ currentUser });
           }),
@@ -138,7 +118,7 @@ export const redirectAfterGetCurrentUserFails = createEffect(
     return actions$.pipe(
       ofType(authActions.getCurrentUserFailure),
       tap(() => {
-        persistanceService.delete('accessToken')
+        persistanceService.delete('accessToken');
         router.navigateByUrl('/auth/login');
       })
     );
@@ -206,17 +186,6 @@ export const getCurrentUserEffect = createEffect(
         }
         return authService.getCurrentUser(email as string).pipe(
           map((currentUser: CurrentUserInterface) => {
-            //Set mock user pictures
-            currentUser.photos = [...userPhotosArray];
-            currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)];
-            console.warn('cover', currentUser.cover);
-
-            // Generate fake images for friends
-            currentUser.friends?.forEach((friend) => {
-              if (!friend.image) {
-                friend.image = profileImagesArray[getRandomNumber(0, 10)];
-              }
-            });
             return authActions.getCurrentUserSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) => {

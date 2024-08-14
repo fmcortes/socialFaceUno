@@ -6,7 +6,6 @@ import { RegisterRequestInterface } from 'src/app/core/types/register-request.in
 import { Observable } from 'rxjs';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
 import { selectCurrentUser, selectValidationErrors } from './reducer';
-import { BackendErrorsInterface } from 'src/app/shared/types/backend-error.interface';
 
 @Injectable()
 export class AuthFacade {

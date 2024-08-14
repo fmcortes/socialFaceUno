@@ -7,6 +7,7 @@ import { PostComponent } from './components/posts/post-list/post.component';
 import { PostWriterComponent } from './components/posts/post-writer/post-writer.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ErrorComponent } from './components/error/error.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,12 @@ import { ErrorComponent } from './components/error/error.component';
     PostWriterComponent,
     ErrorComponent,
   ],
-  imports: [CommonModule, RouterModule, InfiniteScrollModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    InfiniteScrollModule,
+    ReactiveFormsModule,
+  ],
   exports: [
     ProfilePictureComponent,
     PostListComponent,

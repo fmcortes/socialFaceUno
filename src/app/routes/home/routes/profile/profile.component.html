@@ -1,0 +1,74 @@
+<ng-container *ngIf="data$ | async as data">
+  <div class="profile-container">
+    <img
+      [src]="data.userProfile?.cover"
+      [alt]="
+        'profile picture of' +
+        data.userProfile?.firstname +
+        data.userProfile?.lastname
+      "
+      class="cover-img"
+    />
+    <div class="profile-details" *ngIf="data.userProfile as userProfile">
+      <div class="pd-left">
+        <div class="pd-row">
+          <img [src]="userProfile.image" alt="" class="pd-image" />
+          <div>
+            <h3>{{ userProfile.firstname }} {{ userProfile.lastname }}</h3>
+            <p *ngIf="userProfile.friends">
+              Friends: {{ userProfile.friends.length }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-info">
+      <div class="info-col">
+        <div class="profile-intro">
+          <h3>Intro</h3>
+          <p class="intro-text">
+            Believe in yoursel and you can do unbeliable things.
+            <img src="assets/images/feeling.png" alt="" />
+          </p>
+          <hr />
+        </div>
+
+        <div class="profile-intro">
+          <!-- Photos -->
+          <app-profile-photo-box
+            [pictures]="data.userProfile?.photos || []"
+          ></app-profile-photo-box>
+        </div>
+        <div class="profile-intro">
+          <ng-container *ngIf="data.userProfile?.friends; else emptyFriends">
+            <app-profile-friend-list
+              [friends]="data.userProfile?.friends || []"
+            ></app-profile-friend-list>
+          </ng-container>
+        </div>
+      </div>
+      <div class="post-col">
+        <app-post-writer *ngIf="data.currentUser?.id === data.userProfile?.id"></app-post-writer>
+        <ng-container
+          *ngIf="data.posts && data.posts.length > 0; else emptyPosts"
+        >
+          <app-post-list
+            [postList]="data.posts"
+            (currentPageEvent)="onCurrentPage()"
+          ></app-post-list>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #emptyFriends>
+  <h3>Friends</h3>
+  <p>No Friends to display</p>
+</ng-template>
+
+<ng-template #emptyPosts>
+  <div class="profile-intro">
+    <p>There is no posts to display</p>
+  </div>
+</ng-template>

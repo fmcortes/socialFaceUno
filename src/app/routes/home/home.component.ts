@@ -11,18 +11,19 @@ import { PostFacade } from 'src/app/shared/components/posts/store/posts-facade';
 export class HomeComponent implements OnInit {
   constructor(private postFacade: PostFacade, private authFacade: AuthFacade) {}
 
-  currentPage = 1;
+  currentPage = 0;
 
   data$ = combineLatest({
     posts: this.postFacade.posts$,
     currentUser: this.authFacade.currentUser$,
   });
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.getPostData();
   }
 
-  getPostData(page = 1) {
-    this.postFacade.fetchPosts(page, true);
+  getPostData() {
+    this.currentPage++;
+    this.postFacade.fetchPosts(this.currentPage, true);
   }
 }

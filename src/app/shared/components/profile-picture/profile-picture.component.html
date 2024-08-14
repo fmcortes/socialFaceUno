@@ -8,10 +8,27 @@
     alt=""
   />
   <div>
-    <p>{{ userProfile?.username }}</p>
-    <a [routerLink]="['/home/profile']" *ngIf="showProfileLink"
-      >See your profile</a
+    <ng-container *ngIf="showProfileLink">
+      <p>{{ userProfile?.username }}</p>
+      <a
+        [routerLink]="['/home/profile', userProfile?.firstname]"
+        [queryParams]="{ userId: userProfile?.id }"
+        *ngIf="showProfileLink"
+        >See your profile</a
+      >
+    </ng-container>
+
+    <a
+      #linkToProfile
+      [routerLink]="[
+        '/home/profile',
+        userProfile?.firstname ? userProfile?.firstname : userProfile?.username
+      ]"
+      [queryParams]="{ userId: userProfile?.id }"
+      *ngIf="!showProfileLink"
+      >{{ userProfile?.firstname ? userProfile?.firstname : userProfile?.username }}</a
     >
+
     <ng-content></ng-content>
   </div>
 </div>

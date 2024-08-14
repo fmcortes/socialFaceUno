@@ -25,6 +25,33 @@ export const postFeature = createFeature({
       data: [],
       error: action.errors,
     })),
+    on(postActions.getPostsByUserId, (state) => ({
+      ...state,
+      isLoading: true,
+    })),
+    on(postActions.getPostsByUserIdSuccess, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [...state.data, ...action.posts],
+    })),
+    on(postActions.getPostsByUserIdFailure, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [],
+      error: action.errors,
+    })),
+    on(postActions.createPosts, (state) => ({ ...state, isLoading: true })),
+    on(postActions.createPostsSuccess, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [action.post, ...state.data],
+    })),
+    on(postActions.createPostsFailure, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [],
+      error: action.errors,
+    })),
     on(routerNavigatedAction, () => initialState)
   ),
 });

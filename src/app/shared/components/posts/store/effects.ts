@@ -25,3 +25,42 @@ export const getPostEffect = createEffect(
   },
   { functional: true }
 );
+
+export const getPostByUserIdEffect = createEffect(
+  (actions$ = inject(Actions), postService = inject(PostService)) => {
+    return actions$.pipe(
+      ofType(postActions.getPostsByUserId),
+      switchMap(({request}) => {
+        const {userId,  page} = request
+        return postService.getPostByUserId(page, userId).pipe(
+          map((posts: PostInterface[]) => {
+            return postActions.getPostsByUserIdSuccess({ posts });
+          }),
+          catchError((errors: HttpErrorResponse) => {
+            return of(postActions.getPostsByUserIdFailure({ errors: errors.error }));
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+
+export const createPostEffect = createEffect(
+  (actions$ = inject(Actions), postService = inject(PostService)) => {
+    return actions$.pipe(
+      ofType(postActions.createPosts),
+      switchMap(({request}) => {        
+        return postService.createPost(request).pipe(
+          map((post: PostInterface) => {
+            return postActions.createPostsSuccess({ post });
+          }),
+          catchError((errors: HttpErrorResponse) => {
+            return of(postActions.createPostsFailure({ errors: errors.error }));
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);

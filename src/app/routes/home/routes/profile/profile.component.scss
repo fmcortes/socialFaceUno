@@ -1,6 +1,6 @@
-@import '../../../../scss/variables/colors';
-@import '../../../../scss/variables/font';
-@import '../../../../scss/mixings/media-queries';
+@import '../../../../../scss/variables/colors';
+@import '../../../../../scss/variables/font';
+@import '../../../../../scss/mixings/media-queries';
 
 .profile-container {
   display: flex;
@@ -133,6 +133,9 @@
 }
 
 .post-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
   flex-basis: 65%;
   @include tablet {
     flex-basis: 100%;
