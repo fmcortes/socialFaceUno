@@ -52,6 +52,13 @@ const routes: Routes = [
             (m) => m.ProfileModule
           ),
       },
+      {
+        path: 'posts/:slug',
+        loadChildren: () =>
+          import('./routes/home/routes/posts/posts.module').then(
+            (m) => m.PostsModule
+          ),
+      },
     ],
   },
 ];

@@ -1,67 +1,41 @@
-<div class="container">
+<div class="container" *ngIf="data$ | async as data">
   <div class="left-sidebar">
-    <div class="imp-links">
-      <a href="#"><img src="assets/images/friends.png" alt="" />Friends</a>
-      <a href="#"><img src="assets/images/group.png" alt="" />Groups</a>
-    </div>
-    <div class="shortcut-links">
-      <p>Your shorcuts</p>
-      <a href="#"
-        ><img src="assets/images/shortcut-1.png" alt="" />Web Developers
-      </a>
-      <a href="#"
-        ><img src="assets/images/shortcut-2.png" alt="" />Web Design course
-      </a>
-      <a href="#"
-        ><img src="assets/images/shortcut-3.png" alt="" />Full Stack Development
-      </a>
-      <a href="#"
-        ><img src="assets/images/shortcut-4.png" alt="" />Website Experts
-      </a>
-    </div>
+    <app-panel>
+      <div class="side-bar-title">
+        <h4>Shorcuts</h4>
+      </div>
+      <div class="imp-links">
+        <app-profile-picture
+          [userProfile]="data.currentUser"
+          [showProfileLink]="true"
+        ></app-profile-picture>
+        <a href="#" class="blue-link"
+          ><img src="assets/images/friends.png" alt="" />Friends</a
+        >
+        <a href="#" class="blue-link"
+          ><img src="assets/images/group.png" alt="" />Groups</a
+        >
+      </div>
+    </app-panel>
+    <app-panel>
+      <div class="side-bar-title">
+        <h4>Tags</h4>
+      </div>
+      <div class="home-tag-container">
+        <a
+          [routerLink]="['/home/posts', tag.tag]"
+          class="blue-link"
+          *ngFor="let tag of data.tags"
+          >#{{ tag.tag }}</a
+        >
+      </div>
+    </app-panel>
   </div>
   <!-- Main content -->
   <div class="main-content">
-    <ng-container *ngIf="data$ | async as data">
-      <app-story-gallery></app-story-gallery>
-
-      <app-post-list
-        [postList]="data.posts"
-        (currentPageEvent)="getPostData()"
-      ></app-post-list>
-    </ng-container>
-  </div>
-  <!-- Rigth Side Bar -->
-  <div class="right-sidebar">   
-    <div class="side-bar-title">
-      <h4>Advertisement</h4>
-      <a href="#">Close</a>
-    </div>
-    <img src="assets/images/advertisement.png" alt="" class="sidebar-ads" />
-    <div class="side-bar-title">
-      <h4>Conversation</h4>
-      <a href="#">Hide Chat</a>
-    </div>
-
-    <div class="online-list">
-      <div class="online">
-        <img src="assets/images/member-1.png" alt="" />
-      </div>
-      <p>Alison Mina</p>
-    </div>
-
-    <div class="online-list">
-      <div class="online">
-        <img src="assets/images/member-2.png" alt="" />
-      </div>
-      <p>Jackson Aston</p>
-    </div>
-
-    <div class="online-list">
-      <div class="online">
-        <img src="assets/images/member-3.png" alt="" />
-      </div>
-      <p>Samona Rose</p>
-    </div>
+    <app-post-list
+      [postList]="data.posts"
+      (currentPageEvent)="getPostData()"
+    ></app-post-list>
   </div>
 </div>

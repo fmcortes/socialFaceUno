@@ -1,1 +1,1 @@
-export type TagType = string
+export type TagType = string;
