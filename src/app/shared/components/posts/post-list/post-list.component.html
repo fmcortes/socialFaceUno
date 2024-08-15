@@ -1,8 +1,10 @@
 <ng-container *ngIf="postList">
   <ul class="post-list" infinite-scroll (scrolled)="onScrollDown()">
-    <li class="post-list-item"><ng-adsense></ng-adsense></li>
-    <li class="post-list-item" *ngFor="let post of postList">
+    <li class="post-list-item" *ngFor="let post of postList; let i = index">
       <app-post-item [post]="post"></app-post-item>
+      <ng-container *ngIf="(i + 1) % 4 === 0">
+        <ng-adsense></ng-adsense>
+      </ng-container>
     </li>
   </ul>
 </ng-container>
