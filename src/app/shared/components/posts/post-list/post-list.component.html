@@ -1,8 +1,8 @@
 <ng-container *ngIf="postList">
-  <ul class="post-list"  infinite-scroll (scrolled)="onScrollDown()">
+  <ul class="post-list" infinite-scroll (scrolled)="onScrollDown()">
+    <li class="post-list-item"><ng-adsense></ng-adsense></li>
     <li class="post-list-item" *ngFor="let post of postList">
       <app-post-item [post]="post"></app-post-item>
     </li>
   </ul>
-
 </ng-container>
