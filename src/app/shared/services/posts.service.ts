@@ -45,6 +45,19 @@ export class PostService {
     );
   }
 
+  getPostByTag(page: number, tag: string): Observable<PostInterface[]> {
+    const url = `https://fakefaceapi.onrender.com/posts?_page=${page}&tagList_like=${tag}`;
+    return this.httpClient.get<PostInterface[]>(url).pipe(
+      map((posts) => {
+        return posts.map((post) => {
+          const index = this.getRandomNumber(10, 0);
+          post.image = imagesArray[index];
+          return post;
+        });
+      })
+    );
+  }
+
   createPost(post: PostInterface): Observable<PostInterface> {
     const url = `https://fakefaceapi.onrender.com/posts`;
     return this.httpClient.post<PostInterface>(url, post);

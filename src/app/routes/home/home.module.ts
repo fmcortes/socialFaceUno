@@ -12,10 +12,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import * as postEffects from '../../shared/components/posts/store/effects';
+import * as tagsEffects from './store/effects';
 
 import { PostFacade } from '../../shared/components/posts/store/posts-facade';
 import { postFeature } from '../../shared/components/posts/store/reducer';
 import { PostService } from '../../shared/services/posts.service';
+import { TagService } from './services/tag-services';
+import { tagsFeature } from './store/reducers';
+import { TagsFacade } from './store/tag-facade';
 
 @NgModule({
   declarations: [HomeComponent, StoryGalleryComponent],
@@ -24,9 +28,10 @@ import { PostService } from '../../shared/services/posts.service';
     HomeRoutingModule,
     SharedModule,
     StoreModule.forFeature(postFeature),
-    EffectsModule.forFeature([postEffects]),
+    StoreModule.forFeature(tagsFeature),
+    EffectsModule.forFeature([postEffects, tagsEffects]),
 
   ],
-  providers: [PostService, PostFacade],
+  providers: [PostService, TagService, PostFacade, TagsFacade],
 })
 export class HomeModule {}

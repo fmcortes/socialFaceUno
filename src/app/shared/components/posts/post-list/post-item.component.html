@@ -2,7 +2,6 @@
   <div class="post-row">
     <app-profile-picture [userProfile]="post?.author">
     </app-profile-picture>
-    <a href=""><i class="fas fa-ellipsis-v"></i></a>
   </div>
   <h2 class="post-title">{{post?.title}}</h2>
   <span>{{ post?.createdAt | date }}</span>
@@ -10,8 +9,8 @@
     {{ post?.body }}
   </p>
   <div class="post-tag-container">
-    <a class="post-tag" *ngFor="let tag of post?.tagList" href="#"
-      >#{{ tag }}l</a
+    <a class="post-tag" *ngFor="let tag of post?.tagList" [routerLink]="['/home/posts', tag]"
+      >#{{ tag }}</a
     >
   </div>
   <img [src]="post?.image" alt="" class="post-img" />
@@ -22,8 +21,6 @@
           post?.favoritesCount
         }}
       </div>
-      <div><img src="assets/images/comments.png" alt="" />45</div>
-      <div><img src="assets/images/share.png" alt="" />20</div>
     </div>
   </div>
 </div>
