@@ -10,7 +10,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { AuthHeaderComponent } from './layout/auth-layout/components/auth-header/auth-header.component';
 import { SpinnerComponent } from './layout/spinner/spinner.component';
 import { SpinnerService } from './layout/spinner/spinner.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -21,7 +21,6 @@ import { CountryService } from './services/country.service';
 import { authFeature } from './layout/auth-layout/store/auth/reducer';
 import { AuthFacade } from './layout/auth-layout/store/auth/auth-facade';
 import { countriesFeature } from './layout/auth-layout/store/country/reducer';
-import { routerReducer } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [

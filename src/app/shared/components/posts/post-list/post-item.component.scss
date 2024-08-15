@@ -7,10 +7,10 @@
     border-radius: 6px;
     padding: 20px;
     color: $right-side-color;
-    margin: 20px 0;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+
   }
   &-title {
     color: $blue;
@@ -28,6 +28,7 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    flex-wrap: wrap;
   }
   &-tag {
     color: $blue;

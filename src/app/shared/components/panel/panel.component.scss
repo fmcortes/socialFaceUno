@@ -1,0 +1,12 @@
+@import "./../../../../scss/variables/colors";
+@import "./../../../../scss/variables/font";
+
+.panel {
+  &-container {
+    background: $white;
+    align-self: flex-start;
+    padding: 20px;
+    border-radius: 4px;
+    color: $right-side-color;
+  }
+}

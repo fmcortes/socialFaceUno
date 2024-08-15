@@ -40,6 +40,21 @@ export const postFeature = createFeature({
       data: [],
       error: action.errors,
     })),
+    on(postActions.getPostsByTag, (state) => ({
+      ...state,
+      isLoading: true,
+    })),
+    on(postActions.getPostsByTagSuccess, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [...state.data, ...action.posts],
+    })),
+    on(postActions.getPostsByTagFailure, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [],
+      error: action.errors,
+    })),
     on(postActions.createPosts, (state) => ({ ...state, isLoading: true })),
     on(postActions.createPostsSuccess, (state, action) => ({
       ...state,

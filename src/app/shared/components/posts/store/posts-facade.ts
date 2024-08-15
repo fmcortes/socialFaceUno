@@ -39,6 +39,12 @@ export class PostFacade {
     );
   }
 
+  fetchPostsByTag(page: number, tag: string) {
+    this.store.dispatch(
+      postActions.getPostsByTag({ request: { tag, page } })
+    );
+  }
+
   createPost(post: PostInterface) {
     this.store.dispatch(postActions.createPosts({request: post}))
   }

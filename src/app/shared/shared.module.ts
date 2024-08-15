@@ -3,19 +3,21 @@ import { CommonModule } from '@angular/common';
 import { ProfilePictureComponent } from './components/profile-picture/profile-picture.component';
 import { RouterModule, RouterState } from '@angular/router';
 import { PostListComponent } from './components/posts/post-list/post-list.component';
-import { PostComponent } from './components/posts/post-list/post.component';
+import { PostItemComponent } from './components/posts/post-list/post-item.component';
 import { PostWriterComponent } from './components/posts/post-writer/post-writer.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ErrorComponent } from './components/error/error.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PanelComponent } from './components/panel/panel.component';
 
 @NgModule({
   declarations: [
     ProfilePictureComponent,
     PostListComponent,
-    PostComponent,
+    PostItemComponent,
     PostWriterComponent,
     ErrorComponent,
+    PanelComponent
   ],
   imports: [
     CommonModule,
@@ -26,9 +28,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     ProfilePictureComponent,
     PostListComponent,
-    PostComponent,
+    PostItemComponent,
     PostWriterComponent,
     ErrorComponent,
+    PanelComponent,
   ],
   providers: [],
 })

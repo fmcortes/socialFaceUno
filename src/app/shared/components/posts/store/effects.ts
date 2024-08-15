@@ -46,6 +46,26 @@ export const getPostByUserIdEffect = createEffect(
   { functional: true }
 );
 
+export const getPostByTagdEffect = createEffect(
+  (actions$ = inject(Actions), postService = inject(PostService)) => {
+    return actions$.pipe(
+      ofType(postActions.getPostsByTag),
+      switchMap(({request}) => {
+        const {tag,  page} = request
+        return postService.getPostByTag(page, tag).pipe(
+          map((posts: PostInterface[]) => {
+            return postActions.getPostsByTagSuccess({ posts });
+          }),
+          catchError((errors: HttpErrorResponse) => {
+            return of(postActions.getPostsByTagFailure({ errors: errors.error }));
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+
 export const createPostEffect = createEffect(
   (actions$ = inject(Actions), postService = inject(PostService)) => {
     return actions$.pipe(
