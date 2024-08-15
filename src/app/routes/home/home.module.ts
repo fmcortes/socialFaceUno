@@ -20,6 +20,7 @@ import { PostService } from '../../shared/services/posts.service';
 import { TagService } from './services/tag-services';
 import { tagsFeature } from './store/reducers';
 import { TagsFacade } from './store/tag-facade';
+import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
   declarations: [HomeComponent, StoryGalleryComponent],
@@ -30,7 +31,6 @@ import { TagsFacade } from './store/tag-facade';
     StoreModule.forFeature(postFeature),
     StoreModule.forFeature(tagsFeature),
     EffectsModule.forFeature([postEffects, tagsEffects]),
-
   ],
   providers: [PostService, TagService, PostFacade, TagsFacade],
 })

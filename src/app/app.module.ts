@@ -15,6 +15,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { authInterceptor } from './shared/services/authinterceptor';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,8 +24,8 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
     AppRoutingModule,
     CoreModule,
     EffectsModule.forRoot(),
-    StoreModule.forRoot({router: routerReducer}, {}),
-    StoreRouterConnectingModule.forRoot()
+    StoreModule.forRoot({ router: routerReducer }, {}),
+    StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpinnerInterceptor, multi: true },

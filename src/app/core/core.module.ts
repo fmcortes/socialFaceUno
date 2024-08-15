@@ -21,6 +21,7 @@ import { CountryService } from './services/country.service';
 import { authFeature } from './layout/auth-layout/store/auth/reducer';
 import { AuthFacade } from './layout/auth-layout/store/auth/auth-facade';
 import { countriesFeature } from './layout/auth-layout/store/country/reducer';
+import { AdsenseComponent, AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
   declarations: [

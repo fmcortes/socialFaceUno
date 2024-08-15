@@ -9,6 +9,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ErrorComponent } from './components/error/error.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PanelComponent } from './components/panel/panel.component';
+import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,9 @@ import { PanelComponent } from './components/panel/panel.component';
     RouterModule,
     InfiniteScrollModule,
     ReactiveFormsModule,
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-3877699405191385',
+    }),
   ],
   exports: [
     ProfilePictureComponent,
