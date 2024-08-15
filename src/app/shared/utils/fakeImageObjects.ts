@@ -6,7 +6,7 @@ export const imagesArray: string[] = [
   'assets/images/feed-image-5.png',
   'assets/images/feed-image-6.png',
   'assets/images/feed-image-7.png',
-  '/assets/images/feed-image-8.png',
+  'assets/images/feed-image-8.png',
   'assets/images/feed-image-9.png',
   'assets/images/feed-image-10.png',
   'assets/images/feed-image-11.png',
