@@ -37,4 +37,11 @@ export class AuthService {
       })
     );
   }
+
+  updateUser(
+    currentUser: CurrentUserInterface
+  ): Observable<CurrentUserInterface> {
+    const url = `https://fakefaceapi.onrender.com/users/${currentUser.id}`;
+    return this.httpClient.patch<CurrentUserInterface>(url, currentUser);
+  }
 }

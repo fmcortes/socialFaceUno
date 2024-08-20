@@ -36,10 +36,14 @@ export class AuthFacade {
   }
 
   clearErrors(): void {
-    this.store.dispatch(authActions.clearErrors())
+    this.store.dispatch(authActions.clearErrors());
   }
 
   getCurrentUser(): void {
     this.store.dispatch(authActions.getCurrentUser());
+  }
+
+  updateCurrentUser(currentUser: CurrentUserInterface): void {
+    this.store.dispatch(authActions.updateCurrentUser({ currentUser }));
   }
 }
