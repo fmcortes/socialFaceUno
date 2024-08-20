@@ -59,6 +59,13 @@ const routes: Routes = [
             (m) => m.PostsModule
           ),
       },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./routes/home/routes/settings/settings.module').then(
+            (m) => m.SettingsModule
+          ),
+      },
     ],
   },
 ];
