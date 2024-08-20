@@ -74,15 +74,38 @@ export const registerEffect = createEffect(
             persistanceService.set('accessToken', registerResponse.accessToken);
 
             const { user: currentUser } = registerResponse;
-            //Set mock user pictures
-            /* currentUser.photos = [...userPhotosArray];
-            currentUser.cover = coverPhotosArray[getRandomNumber(0, 10)]; */
-
             return authActions.registerSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) => {
             return of(
               authActions.registerFailure({
+                errors: errorResponse.error,
+              })
+            );
+          })
+        );
+      })
+    );
+  },
+  { functional: true }
+);
+
+export const updateUserEffect = createEffect(
+  (
+    actions$ = inject(Actions),
+    authService = inject(AuthService),
+    persistanceService = inject(PersistanceService)
+  ) => {
+    return actions$.pipe(
+      ofType(authActions.updateCurrentUser),
+      switchMap(({ currentUser }) => {
+        return authService.updateUser(currentUser).pipe(
+          map((currentUser: CurrentUserInterface) => {
+            return authActions.updateCurrentUserSuccess({ currentUser });
+          }),
+          catchError((errorResponse: HttpErrorResponse) => {
+            return of(
+              authActions.updateCurrentFailure({
                 errors: errorResponse.error,
               })
             );
