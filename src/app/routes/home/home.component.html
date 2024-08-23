@@ -1,5 +1,5 @@
 <div class="home-container" *ngIf="data$ | async as data">
-  <div class="home-left-sidebar">
+  <aside class="home-left-sidebar" role="complementary" aria-label="Shorcuts panel">
     <app-panel>
       <div class="home-side-bar-title">
         <h4>Shorcuts</h4>
@@ -30,12 +30,14 @@
         >
       </div>
     </app-panel>
-  </div>
+  </aside>
   <!-- Main content -->
-  <div class="home-main-content">
+  <main class="home-main-content" id="main">
+    <h1 class="home-title">Global Posts</h1>
     <app-post-list
       [postList]="data.posts"
       (currentPageEvent)="getPostData()"
+      [postTitle]="'Global'"
     ></app-post-list>
-  </div>
+  </main>
 </div>

@@ -14,22 +14,18 @@
   box-sizing: border-box;
 }
 
-:root {
-  --body-color: #efefef;
-  --nav-color: #1876f2;
-  --bg-color: #fff;
-}
-
-.dark-theme {
-  --body-color: #0a0a0a;
-  --nav-color: #000;
-  --bg-color: #000;
-}
-
 body {
   background: $body-color-light;
   transition: background 0.3s;
 }
+main {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 0.125rem $white, 0 0 0 calc(0.125rem * 2) $cyan;
+  }
+}
+
+
 
 .btn-field {
   width: 100%;
@@ -108,14 +104,11 @@ body {
   margin-right: 5px;
 }
 
-.post-row a {
-  color: #9a9a9a;
-}
-
 .blue-link {
   font-size: $small;
-  color: #1876f2;
+  color: $dark-blue;
   text-decoration: none;
+  font-weight: $font-weight-normal;
 }
 
 .container {

@@ -1,11 +1,18 @@
 <ng-container *ngIf="data$ | async as data">
   <div class="form-box">
-    <app-error *ngIf="data.errors" [backendErrors]="data.errors" (clearErrors)="onClearErrors()"></app-error>
+    <app-error
+      *ngIf="data.errors"
+      [backendErrors]="data.errors"
+      (clearErrors)="onClearErrors()"
+    ></app-error>
     <h1>Sign In</h1>
     <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="input-group">
         <div class="input-group-item">
-          <span>*</span>
+          <div class="input-group-item-label">
+            <span>*</span>
+            <label for="userEmail">Email</label>
+          </div>
           <div
             class="input-field"
             [ngClass]="
@@ -20,7 +27,6 @@
               type="text"
               name="userEmail"
               id="userEmail"
-              placeholder="Email"
               formControlName="email"
             />
           </div>
@@ -35,7 +41,10 @@
           * Email is required
         </div>
         <div class="input-group-item">
-          <span>*</span>
+          <div class="input-group-item-label">
+            <span>*</span>
+            <label for="userPassword">Password</label>
+          </div>
           <div
             class="input-field"
             [ngClass]="
@@ -67,11 +76,13 @@
         <p class="required-fields">* Required Fields</p>
         <p>
           Don't have an account?
-          <a [routerLink]="['/auth/register']">Click Here!</a>
+          <a class="blue-link" [routerLink]="['/auth/register']">Register</a>
         </p>
         <p>
           Lost Your Password
-          <a [routerLink]="['/auth/forgot-password']">Click Here!</a>
+          <a class="blue-link" [routerLink]="['/auth/forgot-password']"
+            >Forgot Password</a
+          >
         </p>
       </div>
       <div class="btn-field">

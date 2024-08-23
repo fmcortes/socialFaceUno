@@ -40,9 +40,10 @@
   align-items: flex-start;
 }
 
-.pd-row div h3 {
+.pd-row div h1 {
   font-size: $large;
   font-weight: $font-weight-semi-bold;
+  color: $body-color-dark;
   @include tablet {
     font-size: $medium;
   }

@@ -1,4 +1,5 @@
 @import "../../../../scss/variables/colors";
+@import "../../../../scss/variables/font";
 @import "../../../../scss/mixings/media-queries";
 
 header {
@@ -27,6 +28,7 @@ nav {
 .nav-right {
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 
 .nav-left ul li {
@@ -65,4 +67,28 @@ nav {
   padding: 10px;
   outline: none;
   border: 0;
+}
+
+.skip-link {
+  color: $white;
+  text-decoration: none;
+  font-size: $medium;
+}
+
+.visually-hidden {
+  
+  &:not(:focus),
+  :not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
 }

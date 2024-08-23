@@ -1,26 +1,42 @@
-<div class="post-container">
-  <div class="post-row">
-    <app-profile-picture [userProfile]="post?.author">
-    </app-profile-picture>
-  </div>
-  <h2 class="post-title">{{post?.title}}</h2>
-  <span>{{ post?.createdAt | date }}</span>
-  <p class="post-text">
-    {{ post?.body }}
-  </p>
-  <div class="post-tag-container">
-    <a class="post-tag" *ngFor="let tag of post?.tagList" [routerLink]="['/home/posts', tag]"
-      >#{{ tag }}</a
-    >
-  </div>
-  <img [src]="post?.image" alt="" class="post-img" />
-  <div class="post-row">
-    <div class="activity-icons">
-      <div>
-        <img src="assets/images/like-blue.png" alt="" />{{
-          post?.favoritesCount
-        }}
+<ng-container *ngIf="post">
+  <div
+    class="post-container"
+    tabindex="0"
+    [attr.aria-posinset]="position"
+    aria-setsize="-1"
+    role="article"
+    [attr.aria-labelledby]="'post-title-' + position"
+    [id]="'post-' + position"
+  >
+    <div class="post-row">
+      <app-profile-picture [userProfile]="post.author"> </app-profile-picture>
+    </div>
+    <h2 class="post-title" [id]="'post-title-' + position">
+      {{ post.title }}
+    </h2>
+    <span>{{ post.createdAt | date }}</span>
+
+    <p class="post-text" [id]="'post-description-' + position">
+      {{ post.body }}
+    </p>
+
+    <ul class="post-tag-container">
+      <li
+        *ngFor="let tag of post?.tagList; let i = index"
+        [id]="'post-tag-' + position + 'tag-' + i"
+      >
+        <a class="post-tag" [routerLink]="['/home/posts', tag]">#{{ tag }}</a>
+      </li>
+    </ul>
+    <img [src]="post.image" alt="An image of the post" class="post-img" />
+    <div class="post-row">
+      <div class="activity-icons">
+        <div>
+          <img src="assets/images/like-blue.png" alt="Favorite count" />{{
+            post.favoritesCount
+          }}
+        </div>
       </div>
     </div>
   </div>
-</div>
+</ng-container>
