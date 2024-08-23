@@ -8,4 +8,5 @@ import { PostInterface } from '../types/post.interface'
 })
 export class PostItemComponent {
   @Input() post?: PostInterface;
+  @Input() position = 0
 }

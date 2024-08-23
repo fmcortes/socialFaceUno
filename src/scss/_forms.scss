@@ -1,4 +1,4 @@
-@import './variables/colors';
+@import "./variables/colors";
 
 .form {
   &-box {
@@ -16,16 +16,12 @@
     & h1 {
       font-size: 30px;
       margin-bottom: 60px;
-      color: $blue;
+      color: $dark-blue;
     }
     & p {
       text-align: left;
       font-size: 13px;
       margin-bottom: 8px;
-      & a {
-        text-decoration: none;
-        color: $blue;
-      }
     }
   }
 }
@@ -35,10 +31,15 @@
     width: 100%;
     &-item {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       gap: 0.5rem;
-      & span {
-        color: $danger;
+      
+      &-label {
+        display: flex;
+        gap: 0.5rem;
+        & span {
+          color: $dark-red;
+        }
       }
     }
   }
@@ -49,7 +50,8 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
-    & input, select {
+    & input,
+    select {
       width: 100%;
       background: transparent;
       border: 0;
@@ -63,15 +65,19 @@
     &-invalid {
       border: solid 1px $danger;
     }
+     &:focus-within {
+      outline: none;
+      box-shadow: 0 0 0 0.125rem $white, 0 0 0 calc(0.125rem * 2) $cyan;
+    }
   }
 }
 
 .required-fields {
-  color: $danger;
+  color: $dark-red;
   font-size: $small;
 }
 
 .error-message {
-  color: $danger;
+  color: $dark-red;
   font-size: $medium;
 }

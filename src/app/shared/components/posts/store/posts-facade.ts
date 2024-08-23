@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { postActions } from './actions';
 import { filter, Observable } from 'rxjs';
 
-import { selectPostData } from './reducer';
+import { selectPostData, selectIsLoading } from './reducer';
 import { selectCurrentUser } from 'src/app/core/layout/auth-layout/store/auth/reducer';
 import { PostInterface } from '../types/post.interface';
 import { PostRequestInterface } from '../types/post-request.interface';
@@ -16,6 +16,10 @@ export class PostFacade {
 
   get posts$(): Observable<PostInterface[] | null | undefined> {
     return this.store.select(selectPostData);
+  }
+
+  get isLoadingPost$():Observable<boolean> {
+    return this.store.select(selectIsLoading)
   }
 
   fetchPosts(currentPage: number, global: boolean) {

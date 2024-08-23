@@ -10,11 +10,6 @@
     @include tablet {
       flex-direction: column;
     }
-    &-link {
-      text-decoration: none;
-      color: $blue;
-      font-size: $small;
-    }
   }
   &-box {
     display: grid;

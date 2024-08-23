@@ -14,7 +14,7 @@
         <div class="pd-row">
           <img [src]="userProfile.image" alt="" class="pd-image" />
           <div>
-            <h3>{{ userProfile.firstname }} {{ userProfile.lastname }}</h3>
+            <h1>{{ userProfile.firstname }} {{ userProfile.lastname }}</h1>
             <p *ngIf="userProfile.friends">
               Friends: {{ userProfile.friends.length }}
             </p>
@@ -33,31 +33,39 @@
           <hr />
         </div>
 
-        <div class="profile-intro">
-          <!-- Photos -->
-          <app-profile-photo-box
-            [pictures]="data.userProfile?.photos || []"
-          ></app-profile-photo-box>
-        </div>
-        <div class="profile-intro">
-          <ng-container *ngIf="data.userProfile?.friends; else emptyFriends">
-            <app-profile-friend-list
-              [friends]="data.userProfile?.friends || []"
-            ></app-profile-friend-list>
-          </ng-container>
-        </div>
+        <aside>
+          <div class="profile-intro">
+            <!-- Photos -->
+            <app-profile-photo-box
+              [pictures]="data.userProfile?.photos || []"
+            ></app-profile-photo-box>
+          </div>
+          <div class="profile-intro">
+            <ng-container *ngIf="data.userProfile?.friends; else emptyFriends">
+              <app-profile-friend-list
+                [friends]="data.userProfile?.friends || []"
+              ></app-profile-friend-list>
+            </ng-container>
+          </div>
+
+        </aside>
       </div>
-      <div class="post-col">
-        <app-post-writer *ngIf="data.currentUser?.id === data.userProfile?.id"></app-post-writer>
-        <ng-container
-          *ngIf="data.posts && data.posts.length > 0; else emptyPosts"
-        >
+      <main id="main" class="post-col">
+        <app-post-writer
+          *ngIf="data.currentUser?.id === data.userProfile?.id"
+        ></app-post-writer>
+        <ng-container *ngIf="data.posts && data.posts.length; else emptyPosts">
           <app-post-list
             [postList]="data.posts"
             (currentPageEvent)="onCurrentPage()"
+            [postTitle]="
+              data.userProfile !== null && data.userProfile
+                ? data.userProfile.firstname + ' ' + data.userProfile.lastname
+                : ''
+            "
           ></app-post-list>
         </ng-container>
-      </div>
+      </main>
     </div>
   </div>
 </ng-container>
