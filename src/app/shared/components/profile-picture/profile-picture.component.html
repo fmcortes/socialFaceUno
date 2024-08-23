@@ -6,11 +6,13 @@
         : 'assets/images/user-default-2.png'
     "
     alt=""
+    class="user-profile-image"
   />
   <div>
     <ng-container *ngIf="showProfileLink">
       <p>{{ userProfile?.username }}</p>
       <a
+        class="blue-link"
         [routerLink]="['/home/profile', userProfile?.firstname]"
         [queryParams]="{ userId: userProfile?.id }"
         *ngIf="showProfileLink"
@@ -19,6 +21,7 @@
     </ng-container>
 
     <a
+      class="blue-link"
       #linkToProfile
       [routerLink]="[
         '/home/profile',
@@ -26,7 +29,9 @@
       ]"
       [queryParams]="{ userId: userProfile?.id }"
       *ngIf="!showProfileLink"
-      >{{ userProfile?.firstname ? userProfile?.firstname : userProfile?.username }}</a
+      >{{
+        userProfile?.firstname ? userProfile?.firstname : userProfile?.username
+      }}</a
     >
 
     <ng-content></ng-content>

@@ -1,10 +1,23 @@
 <ng-container *ngIf="postList">
-  <ul class="post-list" infinite-scroll (scrolled)="onScrollDown()">
-    <li class="post-list-item" *ngFor="let post of postList; let i = index">
-      <app-post-item [post]="post"></app-post-item>
+  <div
+    role="feed"
+    class="post-list"
+    infinite-scroll
+    (scrolled)="onScrollDown()"
+    [attr.aria-busy]="isLoading"
+    [attr.aria-label]="postTitle + ' posts page'"
+  >
+    <ng-container *ngFor="let post of postList; let i = index">
+      <app-post-item [post]="post" [position]="i + 1"></app-post-item>
       <ng-container *ngIf="(i + 1) % 4 === 0">
-        <ng-adsense></ng-adsense>
+        <article
+          [attr.aria-posinset]="i + 1"
+          aria-setsize="-1"
+          [id]="'advertisiment-' + i + 1"
+        >
+          <ng-adsense></ng-adsense>
+        </article>
       </ng-container>
-    </li>
-  </ul>
+    </ng-container>
+  </div>
 </ng-container>

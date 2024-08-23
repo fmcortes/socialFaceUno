@@ -10,8 +10,9 @@
   transition: background 1s;
   font-size: 1rem;
   &-blue {
-    background: $blue;
+    background: $dark-blue;
     color: $white;
+    
   }
   &-disable {
     background-color: $light-gray;
@@ -29,17 +30,20 @@
   }
 
   &-small {
-    background: $blue;
+    background: $dark-blue;
     border: 0;
     outline: 0;
     padding: 6px 10px;
     display: inline-flex;
     align-items: center;
-    color: #fff;
+    color: $white;
     border-radius: 3px;
     margin-left: 10px;
     cursor: pointer;
     justify-content: center;
     width: 100px;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.125rem $white, 0 0 0 calc(0.125rem * 2) $cyan;
   }
 }

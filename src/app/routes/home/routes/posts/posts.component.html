@@ -1,8 +1,12 @@
-<div class="post-container">
-  <ng-container *ngIf="data$ | async as data">
-    <app-post-list
+<main>
+
+  <div class="post-container">
+    <ng-container *ngIf="data$ | async as data">
+      <app-post-list
       [postList]="data.posts"
       (currentPageEvent)="onCurrentPage()"
-    ></app-post-list>
-  </ng-container>
-</div>
+      [postTitle]="slug"
+      ></app-post-list>
+    </ng-container>
+  </div>
+</main>

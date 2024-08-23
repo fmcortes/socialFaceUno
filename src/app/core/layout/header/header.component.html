@@ -1,12 +1,16 @@
 <header>
- <nav>
-  <div class="nav-left">
-    <a [routerLink]="['/home']">
-      <img src="assets/images/logo.png" class="logo"  alt="Social Face home"/>
-    </a>
-  </div>
-  <div class="nav-right">
-    <app-settings></app-settings>
-  </div>
-</nav>
+  <nav>
+    <div class="nav-left">
+      <a [routerLink]="['/home']">
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Social Face home"
+        /> </a
+      ><a class="skip-link visually-hidden" href="#main">Skip to Main Content </a>
+    </div>
+    <div class="nav-right">
+      <app-settings></app-settings>
+    </div>
+  </nav>
 </header>

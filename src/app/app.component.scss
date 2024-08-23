@@ -1,3 +1,5 @@
+@import "../scss/variables/colors";
+@import "../scss/variables/font";
 
 .imp-links a,
 .shortcut-links a {
@@ -10,7 +12,7 @@
 }
 
 .imp-links a:last-child {
-  color: #1876f2;
+  color: $dark-blue;
 }
 
 .imp-links a img {
@@ -97,18 +99,12 @@
   border-radius: 4px;
 }
 
-
-
 .footer {
   text-align: center;
   color: #9a9a9a;
   padding: 10px 0 20px;
   font-size: 13px;
 }
-
-
-
-
 
 /* Profile Page */
 .profile-container {
@@ -131,7 +127,6 @@
   justify-content: space-between;
 }
 
-
 .pd-row {
   display: flex;
   align-items: flex-start;
@@ -145,7 +140,6 @@
 .pd-row div p {
   font-size: 13px;
 }
-
 
 .pd-row div img {
   width: 25px;
@@ -235,7 +229,6 @@
   margin-bottom: -3px;
 }
 
-
 .profile-intro hr {
   border: 0;
   height: 1px;
@@ -282,7 +275,6 @@
 
 .profile-intro p {
   font-size: 14px;
-
 }
 
 .friend-box {
@@ -335,7 +327,7 @@
     width: 20px;
     margin: 0 8px;
   }
-  .nav-user-icon img  {
+  .nav-user-icon img {
     width: 30px;
   }
 

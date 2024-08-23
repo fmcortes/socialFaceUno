@@ -6,7 +6,10 @@
     <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="input-group">
         <div class="input-group-item">
-          <span>*</span>
+          <div class="input-group-item-label">
+            <span>*</span>
+            <label for="userEmail">Email</label>
+          </div>
           <div
             class="input-field"
             [ngClass]="
@@ -36,7 +39,10 @@
           * Email is required
         </div>
         <div class="input-group-item">
-          <span>*</span>
+          <div class="input-group-item-label">
+            <span>*</span>
+            <label for="userPassword">Password</label>
+          </div>
           <div
             class="input-field"
             [ngClass]="
@@ -50,8 +56,7 @@
             <input
               type="password"
               name="userPassword"
-              id="userPassworde"
-              placeholder="Password"
+              id="userPassword"
               formControlName="password"
             />
           </div>
@@ -66,7 +71,10 @@
           * Password is required
         </div>
         <div class="input-group-item">
-          <span>*</span>
+          <div class="input-group-item-label">
+            <span>*</span>
+            <label for="firstname">First Name</label>
+          </div>
           <div
             class="input-field"
             [ngClass]="
@@ -81,7 +89,6 @@
               type="text"
               name="firstname"
               id="firstname"
-              placeholder="First Name"
               formControlName="firstname"
             />
           </div>
@@ -96,7 +103,10 @@
           * First Name is required
         </div>
         <div class="input-group-item">
-          <span>*</span>
+          <div class="input-group-item-label">
+            <span>*</span>
+            <label for="lastname">Last Name</label>
+          </div>
           <div
             class="input-field"
             [ngClass]="
@@ -111,7 +121,6 @@
               type="text"
               name="lastname"
               id="lastname"
-              placeholder="Last Name"
               formControlName="lastname"
             />
           </div>
@@ -126,7 +135,10 @@
           * Last Name is required
         </div>
         <div class="input-group-item">
-          <span>*</span>
+          <div class="input-group-item-label">
+            <span>*</span>
+            <label for="country">Country</label>
+          </div>
           <div
             class="input-field"
             [ngClass]="
@@ -163,7 +175,10 @@
           * Country is required
         </div>
         <div class="input-group-item">
-          <span>*</span>
+          <div class="input-group-item-label">
+            <span>*</span>
+            <label for="notification">Notifications</label>
+          </div>
           <div
             class="input-field"
             [ngClass]="
@@ -200,8 +215,8 @@
           * Notification is required
         </div>
         <p class="required-fields">* Required Fields</p>
-        <p>Sign In <a [routerLink]="['/auth/login']">Click Here!</a></p>
-        <p>Lost Password <a href="">Click Here!</a></p>
+        <p>Sign In <a class="blue-link" [routerLink]="['/auth/login']">Register</a></p>
+        <p>Lost Password <a [routerLink]="['/auth/forgot-password']" class="blue-link">Forgot Password</a></p>
       </div>
       <div class="btn-field">
         <button
