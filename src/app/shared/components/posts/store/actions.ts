@@ -12,7 +12,7 @@ export const postActions = createActionGroup({
     'Get posts failure': props<{errors: string }>(),
 
     'Get posts by user id': props<{request: {userId: number, page: number}}>(),
-    'Get posts by user id success': props<{posts: PostInterface[]}>(),
+    'Get posts by user id success': props<{posts: PostInterface[], currentPage: number}>(),
     'Get posts  by user id failure': props<{errors: string }>(),
 
     'Get posts by tag': props<{request: {tag: string, page: number}}>(),

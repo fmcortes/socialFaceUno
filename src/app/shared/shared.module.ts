@@ -10,6 +10,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PanelComponent } from './components/panel/panel.component';
 import { AdsenseModule } from 'ng2-adsense';
+import { ProfileDetailComponent } from './components/profile-detail/profile-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { AdsenseModule } from 'ng2-adsense';
     PostItemComponent,
     PostWriterComponent,
     ErrorComponent,
-    PanelComponent
+    PanelComponent,
+    ProfileDetailComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +38,7 @@ import { AdsenseModule } from 'ng2-adsense';
     PostWriterComponent,
     ErrorComponent,
     PanelComponent,
+    ProfileDetailComponent
   ],
   providers: [],
 })

@@ -66,6 +66,13 @@ const routes: Routes = [
             (m) => m.SettingsModule
           ),
       },
+      {
+        path: 'friends',
+        loadChildren: () =>
+          import('./routes/home/routes/friends/friends.module').then(
+            (m) => m.FriendsModule
+          ),
+      },
     ],
   },
 ];

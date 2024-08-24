@@ -1,0 +1,48 @@
+@import "../../../../../scss/variables/colors";
+@import "../../../../../scss/variables/font";
+@import "../../../../../scss/mixings/media-queries";
+
+.friends {
+  &-container {
+    display: flex;
+    padding: 20px 15%;
+    color: $right-side-color;
+    gap: 1rem;
+    @include tablet {
+      padding: 20px 5%;
+
+      justify-content: center;
+      flex-direction: column;
+    }
+  }
+  &-list {
+    flex-basis: 33%;
+    @include tablet {
+      flex-basis: 100%;
+    }
+    &-box {
+      list-style: none;
+    }
+    &-image-container {
+      display: flex;
+      gap: 0.5rem;
+      height: 100px;
+      align-items: center;
+      & img {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+    }
+  }
+  &-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-basis: 65%;
+    @include tablet {
+      flex-basis: 100%;
+    }
+  }
+}
