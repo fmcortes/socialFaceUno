@@ -1,0 +1,16 @@
+<div class="profile-detail-container" *ngIf="userProfile">
+  <img
+    [src]="userProfile.cover"
+    [alt]="'profile picture of' + userProfile.firstname + userProfile.lastname"
+    class="profile-detail-cover-img"
+  />
+  <div class="profile-detail-info">
+    <img class="profile-detail-image" [src]="userProfile.image" alt="" />
+    <div class="profile-detail-row">
+      <h1>{{ userProfile.firstname }} {{ userProfile.lastname }}</h1>
+      <p *ngIf="userProfile.friends">
+        Friends: {{ userProfile.friends.length }}
+      </p>
+    </div>
+  </div>
+</div>

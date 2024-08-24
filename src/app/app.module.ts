@@ -16,6 +16,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { authInterceptor } from './shared/services/authinterceptor';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { AdsenseModule } from 'ng2-adsense';
+import { userProfileReducer } from './routes/home/routes/profile/store/reducers';
+
+import * as userProfileEffects from './routes/home/routes/profile/store/effects';
+import { UserProfileService } from './routes/home/routes/profile/services.ts/user-profile.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,8 +27,11 @@ import { AdsenseModule } from 'ng2-adsense';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    EffectsModule.forRoot(),
-    StoreModule.forRoot({ router: routerReducer }, {}),
+    EffectsModule.forRoot([userProfileEffects]),
+    StoreModule.forRoot(
+      { router: routerReducer, userProfile: userProfileReducer },
+      {}
+    ),
     StoreRouterConnectingModule.forRoot(),
   ],
   providers: [
@@ -37,6 +44,7 @@ import { AdsenseModule } from 'ng2-adsense';
       traceLimit: 75,
     }),
     provideHttpClient(withInterceptors([authInterceptor])),
+    UserProfileService
   ],
   bootstrap: [AppComponent],
 })

@@ -34,7 +34,7 @@ export const getPostByUserIdEffect = createEffect(
         const {userId,  page} = request
         return postService.getPostByUserId(page, userId).pipe(
           map((posts: PostInterface[]) => {
-            return postActions.getPostsByUserIdSuccess({ posts });
+            return postActions.getPostsByUserIdSuccess({ posts, currentPage: page });
           }),
           catchError((errors: HttpErrorResponse) => {
             return of(postActions.getPostsByUserIdFailure({ errors: errors.error }));

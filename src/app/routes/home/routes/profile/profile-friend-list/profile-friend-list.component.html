@@ -1,11 +1,11 @@
 <div class="friend-list-title-box">
   <h3>Friends {{ friends.length }}</h3>
-  <a href="" class="blue-link">All Friends</a>
+  <a [routerLink]="['/home/friends']" class="blue-link">All Friends</a>
 </div>
 <ul class="friend-list-box">
   <li *ngFor="let friend of friends">
     <div class="friend-list-image-container">
-      <img [src]="friend.image" [alt]="'photography of' + friend.firstname" />
+      <img [src]="friend.image" [alt]="'photography of ' + friend.firstname" />
       <a class="blue-link"
         [routerLink]="['/home/profile', friend.firstname]"
         [queryParams]="{ userId: friend.id }"
