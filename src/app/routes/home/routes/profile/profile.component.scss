@@ -1,6 +1,6 @@
-@import '../../../../../scss/variables/colors';
-@import '../../../../../scss/variables/font';
-@import '../../../../../scss/mixings/media-queries';
+@import "../../../../../scss/variables/colors";
+@import "../../../../../scss/variables/font";
+@import "../../../../../scss/mixings/media-queries";
 
 .profile-container {
   display: flex;
@@ -10,61 +10,6 @@
   @include tablet {
     padding: 20px 5%;
   }
-}
-
-.cover-img {
-  width: 100%;
-  height: 640px;
-  border-radius: 6px;
-  margin-bottom: 14px;
-  @include tablet {
-    height: 320px;
-  }
-}
-
-.profile-details {
-  background: $white;
-  padding: 20px;
-  border-radius: 4px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  @include tablet {
-    flex-wrap: wrap;
-  }
-}
-
-
-.pd-row {
-  display: flex;
-  align-items: flex-start;
-}
-
-.pd-row div h1 {
-  font-size: $large;
-  font-weight: $font-weight-semi-bold;
-  color: $body-color-dark;
-  @include tablet {
-    font-size: $medium;
-  }
-}
-
-.pd-row div p {
-  font-size: $small;
-}
-
-
-.pd-row div img {
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  margin-top: 12px;
-}
-
-.pd-image {
-  width: 100px;
-  margin-right: 20px;
-  border-radius: 6px;
 }
 
 .pd-right button {
@@ -82,36 +27,6 @@
     margin-left: 0;
     margin-right: 10px;
   }
-}
-
-.pd-right button img {
-  height: 15px;
-  margin-right: 10px;
-}
-
-.pd-right button:first-child {
-  background: $pale-gray;
-  color: $black;
-}
-
-.pd-right {
-  text-align: right;
-  @include tablet {
-    text-align: left;
-    margin-top: 15px;
-  }
-}
-
-.pd-right a {
-  background: $pale-gray;
-  border-radius: 3px;
-  padding: 12px;
-  display: inline-flex;
-  margin-top: 30px;
-}
-
-.pd-right a img {
-  width: 20px;
 }
 
 .profile-info {
@@ -140,6 +55,7 @@
   flex-basis: 65%;
   @include tablet {
     flex-basis: 100%;
+    width: 100%;
   }
 }
 
@@ -149,62 +65,29 @@
   margin-bottom: 20px;
   border-radius: 4px;
   @include tablet {
-   padding: 0.5rem;
+    padding: 0.5rem;
   }
-}
-
-.profile-intro h3 {
+  & h3 {
   font-weight: $font-weight-semi-bold;
+
+  }
+  & hr {
+    border: 0;
+    height: 1px;
+    background: $gray80;
+    margin: 24px 0;
+  }
+  & p {
+    font-size: 14px;
+  }
 }
 
 .intro-text {
   text-align: center;
   margin: 10px 0;
   font-size: 15px;
+  & img {
+    width: 15px;
+    margin-bottom: -3px;
+  }
 }
-
-.intro-text img {
-  width: 15px;
-  margin-bottom: -3px;
-}
-
-
-.profile-intro hr {
-  border: 0;
-  height: 1px;
-  background: $gray80;
-  margin: 24px 0;
-}
-
-.profile-intro ul li {
-  list-style: none;
-  font-size: $medium;
-  margin: 15px 0;
-  display: flex;
-  align-items: center;
-}
-
-.profile-intro ul li img {
-  width: 26px;
-  margin-right: 10px;
-}
-
-.title-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.title-box a {
-  text-decoration: none;
-  color: $blue;
-  font-size: $small;
-}
-
-
-
-.profile-intro p {
-  font-size: 14px;
-
-}
-

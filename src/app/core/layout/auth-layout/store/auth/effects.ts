@@ -8,6 +8,11 @@ import { AuthReponseInterface } from '../../../../types/authResponse.interface';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
+import { profileImagesArray } from 'src/app/shared/utils/fakeImageObjects';
+
+const getRandomNumber = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min)) + min;
+};
 
 export const loginEffect = createEffect(
   (
@@ -23,6 +28,14 @@ export const loginEffect = createEffect(
             const { user: currentUser } = loginResponse;
             persistanceService.set('accessToken', loginResponse.accessToken);
             persistanceService.set('email', currentUser.email);
+
+
+            // Generate fake images for friends
+            currentUser.friends?.forEach((friend) => {
+              if (!friend.image) {
+                friend.image = profileImagesArray[getRandomNumber(0, 10)];
+              }
+            });
 
             return authActions.loginSuccess({ currentUser });
           }),
@@ -209,6 +222,12 @@ export const getCurrentUserEffect = createEffect(
         }
         return authService.getCurrentUser(email as string).pipe(
           map((currentUser: CurrentUserInterface) => {
+            // Generate fake images for friends
+            currentUser.friends?.forEach((friend) => {
+              if (!friend.image) {
+                friend.image = profileImagesArray[getRandomNumber(0, 10)];
+              }
+            });
             return authActions.getCurrentUserSuccess({ currentUser });
           }),
           catchError((errorResponse: HttpErrorResponse) => {

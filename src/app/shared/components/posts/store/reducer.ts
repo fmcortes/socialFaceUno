@@ -32,7 +32,7 @@ export const postFeature = createFeature({
     on(postActions.getPostsByUserIdSuccess, (state, action) => ({
       ...state,
       isLoading: false,
-      data: [...state.data, ...action.posts],
+      data: action.currentPage > 0 ? [...state.data, ...action.posts]: [...action.posts],
     })),
     on(postActions.getPostsByUserIdFailure, (state, action) => ({
       ...state,

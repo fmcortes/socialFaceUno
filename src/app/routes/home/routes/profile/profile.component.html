@@ -1,27 +1,8 @@
 <ng-container *ngIf="data$ | async as data">
   <div class="profile-container">
-    <img
-      [src]="data.userProfile?.cover"
-      [alt]="
-        'profile picture of' +
-        data.userProfile?.firstname +
-        data.userProfile?.lastname
-      "
-      class="cover-img"
-    />
-    <div class="profile-details" *ngIf="data.userProfile as userProfile">
-      <div class="pd-left">
-        <div class="pd-row">
-          <img [src]="userProfile.image" alt="" class="pd-image" />
-          <div>
-            <h1>{{ userProfile.firstname }} {{ userProfile.lastname }}</h1>
-            <p *ngIf="userProfile.friends">
-              Friends: {{ userProfile.friends.length }}
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <app-profile-detail
+      [userProfile]="data.userProfile || null"
+    ></app-profile-detail>
     <div class="profile-info">
       <div class="info-col">
         <div class="profile-intro">
@@ -47,7 +28,6 @@
               ></app-profile-friend-list>
             </ng-container>
           </div>
-
         </aside>
       </div>
       <main id="main" class="post-col">

@@ -1,0 +1,37 @@
+<ng-container *ngIf="data$ | async as data">
+  <div class="friends-container">
+    <div class="friends-list">
+      <app-panel>
+        <h2>All Friends</h2>
+        <ul class="friends-list-box">
+          <li
+            *ngFor="let friend of data.currentUser?.friends"
+            (click)="onFriendSelected(friend)"
+          >
+            <div class="friends-list-image-container">
+              <img
+                [src]="friend.image"
+                [alt]="'photography of ' + friend.firstname"
+              />
+              <p href="javascript: void(0)">
+                {{ friend.firstname }} {{ friend.lastname }}
+              </p>
+            </div>
+          </li>
+        </ul>
+      </app-panel>
+    </div>
+
+    <main>
+      <div class="friends-posts" *ngIf="data.userProfile as userProfile">
+        <app-profile-detail [userProfile]="userProfile"></app-profile-detail>
+
+        <app-post-list
+          [postList]="data.posts"
+          (currentPageEvent)="onCurrentPage()"
+          [postTitle]="'Global'"
+        ></app-post-list>
+      </div>
+    </main>
+  </div>
+</ng-container>
