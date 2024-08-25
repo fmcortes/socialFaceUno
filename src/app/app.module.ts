@@ -10,16 +10,18 @@ import {
   withInterceptors,
 } from '@angular/common/http';
 import { SpinnerInterceptor } from './core/providers/spinner.interceptor';
-import { provideStore, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { authInterceptor } from './shared/services/authinterceptor';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
-import { AdsenseModule } from 'ng2-adsense';
 import { userProfileReducer } from './routes/home/routes/profile/store/reducers';
 
 import * as userProfileEffects from './routes/home/routes/profile/store/effects';
+
+
 import { UserProfileService } from './routes/home/routes/profile/services.ts/user-profile.service';
+import { PostService } from './shared/services/posts.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -44,7 +46,8 @@ import { UserProfileService } from './routes/home/routes/profile/services.ts/use
       traceLimit: 75,
     }),
     provideHttpClient(withInterceptors([authInterceptor])),
-    UserProfileService
+    UserProfileService,
+    PostService,
   ],
   bootstrap: [AppComponent],
 })

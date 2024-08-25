@@ -18,8 +18,8 @@ export class PostFacade {
     return this.store.select(selectPostData);
   }
 
-  get isLoadingPost$():Observable<boolean> {
-    return this.store.select(selectIsLoading)
+  get isLoadingPost$(): Observable<boolean> {
+    return this.store.select(selectIsLoading);
   }
 
   fetchPosts(currentPage: number, global: boolean) {
@@ -43,14 +43,17 @@ export class PostFacade {
     );
   }
 
-  fetchPostsByTag(page: number, tag: string) {
+  fetchAllPostsByUserId(userId: number) {
     this.store.dispatch(
-      postActions.getPostsByTag({ request: { tag, page } })
+      postActions.getAllPostsByUserId({ request: { userId } })
     );
   }
 
-  createPost(post: PostInterface) {
-    this.store.dispatch(postActions.createPosts({request: post}))
+  fetchPostsByTag(page: number, tag: string) {
+    this.store.dispatch(postActions.getPostsByTag({ request: { tag, page } }));
   }
 
+  createPost(post: PostInterface) {
+    this.store.dispatch(postActions.createPosts({ request: post }));
+  }
 }
