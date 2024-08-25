@@ -32,9 +32,27 @@ export const postFeature = createFeature({
     on(postActions.getPostsByUserIdSuccess, (state, action) => ({
       ...state,
       isLoading: false,
-      data: action.currentPage > 0 ? [...state.data, ...action.posts]: [...action.posts],
+      data:
+        action.currentPage > 0
+          ? [...state.data, ...action.posts]
+          : [...action.posts],
     })),
     on(postActions.getPostsByUserIdFailure, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [],
+      error: action.errors,
+    })),
+    on(postActions.getAllPostsByUserId, (state) => ({
+      ...state,
+      isLoading: true,
+    })),
+    on(postActions.getAllPostsByUserIdSuccess, (state, action) => ({
+      ...state,
+      isLoading: false,
+      data: [...action.posts],
+    })),
+    on(postActions.getAllPostsByUserIdFailure, (state, action) => ({
       ...state,
       isLoading: false,
       data: [],

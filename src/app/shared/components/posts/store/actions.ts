@@ -15,6 +15,10 @@ export const postActions = createActionGroup({
     'Get posts by user id success': props<{posts: PostInterface[], currentPage: number}>(),
     'Get posts  by user id failure': props<{errors: string }>(),
 
+    'Get all posts by user id': props<{request: {userId: number}}>(),
+    'Get all posts by user id success': props<{posts: PostInterface[]}>(),
+    'Get all posts  by user id failure': props<{errors: string }>(),
+
     'Get posts by tag': props<{request: {tag: string, page: number}}>(),
     'Get posts by tag success': props<{posts: PostInterface[]}>(),
     'Get posts  by tag failure': props<{errors: string }>(),

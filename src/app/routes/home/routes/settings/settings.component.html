@@ -1,149 +1,160 @@
-<div class="form-box">
+<main id="main" class="form-box">
   <h1>Settings</h1>
-   <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="input-group">
-        <div class="input-group-item">
+  <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+      <div class="input-group-item">
+        <div class="input-group-item-label">
           <span>*</span>
-          <div
-            class="input-field"
-            [ngClass]="
-              form.controls.firstname.invalid &&
-              (form.controls.firstname.dirty || form.controls.firstname.touched)
-                ? 'input-field-invalid'
-                : ''
-            "
-          >
-            <i class="fa-solid fa-user"></i>
-            <input
-              type="text"
-              name="firstname"
-              id="firstname"
-              placeholder="First Name"
-              formControlName="firstname"
-            />
-          </div>
+          <label for="firstname">First Name</label>
         </div>
         <div
-          class="error-message"
-          *ngIf="
+          class="input-field"
+          [ngClass]="
             form.controls.firstname.invalid &&
             (form.controls.firstname.dirty || form.controls.firstname.touched)
+              ? 'input-field-invalid'
+              : ''
           "
         >
-          * First Name is required
+          <i class="fa-solid fa-user"></i>
+          <input
+            type="text"
+            name="firstname"
+            id="firstname"
+            formControlName="firstname"
+          />
         </div>
-        <div class="input-group-item">
+      </div>
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.firstname.invalid &&
+          (form.controls.firstname.dirty || form.controls.firstname.touched)
+        "
+      >
+        * First Name is required
+      </div>
+      <div class="input-group-item">
+        <div class="input-group-item-label">
           <span>*</span>
-          <div
-            class="input-field"
-            [ngClass]="
-              form.controls.lastname.invalid &&
-              (form.controls.lastname.dirty || form.controls.lastname.touched)
-                ? 'input-field-invalid'
-                : ''
-            "
-          >
-            <i class="fa-solid fa-user"></i>
-            <input
-              type="text"
-              name="lastname"
-              id="lastname"
-              placeholder="Last Name"
-              formControlName="lastname"
-            />
-          </div>
+          <label for="lastname">Last Name</label>
         </div>
         <div
-          class="error-message"
-          *ngIf="
+          class="input-field"
+          [ngClass]="
             form.controls.lastname.invalid &&
             (form.controls.lastname.dirty || form.controls.lastname.touched)
+              ? 'input-field-invalid'
+              : ''
           "
         >
-          * Last Name is required
+          <i class="fa-solid fa-user"></i>
+          <input
+            type="text"
+            name="lastname"
+            id="lastname"
+            formControlName="lastname"
+          />
         </div>
+      </div>
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.lastname.invalid &&
+          (form.controls.lastname.dirty || form.controls.lastname.touched)
+        "
+      >
+        * Last Name is required
+      </div>
 
-        <div class="input-group-item">
+      <div class="input-group-item">
+        <div class="input-group-item-label">
           <span>*</span>
-          <div
-            class="input-field"
-            [ngClass]="
-              form.controls.phonenumber.invalid &&
-              (form.controls.phonenumber.dirty || form.controls.phonenumber.touched)
-                ? 'input-field-invalid'
-                : ''
-            "
-          >
-            <i class="fa-solid fa-user"></i>
-            <input
-              type="tel"
-              name="phonenumber"
-              id="phonenumber"
-              placeholder="Phone number"
-              formControlName="phonenumber"
-            />
-          </div>
+          <label for="phonenumber">Phone Number</label>
         </div>
         <div
-          class="error-message"
-          *ngIf="
+          class="input-field"
+          [ngClass]="
             form.controls.phonenumber.invalid &&
-            (form.controls.phonenumber.dirty || form.controls.phonenumber.touched)
+            (form.controls.phonenumber.dirty ||
+              form.controls.phonenumber.touched)
+              ? 'input-field-invalid'
+              : ''
           "
         >
-          * Phone Number is rquired
+          <i class="fa-solid fa-user"></i>
+          <input
+            type="tel"
+            name="phonenumber"
+            id="phonenumber"
+            formControlName="phonenumber"
+          />
         </div>
+      </div>
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.phonenumber.invalid &&
+          (form.controls.phonenumber.dirty || form.controls.phonenumber.touched)
+        "
+      >
+        * Phone Number is required
+      </div>
 
-        <div class="input-group-item">
+      <div class="input-group-item">
+        <div class="input-group-item-label">
           <span>*</span>
-          <div
-            class="input-field"
-            [ngClass]="
-              form.controls.notifications.invalid &&
-              (form.controls.notifications.dirty ||
-                form.controls.notifications.touched)
-                ? 'input-field-invalid'
-                : ''
-            "
-          >
-            <i class="fa-solid fa-user"></i>
-            <select
-              type="text"
-              name="notifications"
-              id="notifications"
-              formControlName="notifications"
-            >
-              <option value="" disabled selected>
-                --Select Notification--
-              </option>
-              <option [value]="'email'">Email</option>
-              <option [value]="'inApp'">In App Notification</option>
-            </select>
-          </div>
+          <label for="notifications">Notifications</label>
         </div>
         <div
-          class="error-message"
-          *ngIf="
+          class="input-field"
+          [ngClass]="
             form.controls.notifications.invalid &&
             (form.controls.notifications.dirty ||
               form.controls.notifications.touched)
+              ? 'input-field-invalid'
+              : ''
           "
         >
-          * Notification is required
+          <i class="fa-solid fa-user"></i>
+          <select
+            type="text"
+            name="notifications"
+            id="notifications"
+            formControlName="notifications"
+          >
+            <option value="" disabled selected>--Select Notification--</option>
+            <option [value]="'email'">Email</option>
+            <option [value]="'inApp'">In App Notification</option>
+          </select>
         </div>
-        <p class="required-fields">* Required Fields</p>
       </div>
-      <div class="btn-field">
-        <button
-          type="submit"
-          class="button button-blue"
-          [ngClass]="
-            form.invalid && (form.touched || form.dirty) ? 'button-disable' : ''
-          "
-          [disabled]="form.invalid && (form.touched || form.dirty)"
-        >
-          Update Information
-        </button>
+      <div
+        class="error-message"
+        *ngIf="
+          form.controls.notifications.invalid &&
+          (form.controls.notifications.dirty ||
+            form.controls.notifications.touched)
+        "
+      >
+        * Notification is required
       </div>
-    </form>
-</div>
+      <p class="required-fields">* Required Fields</p>
+    </div>
+    <div class="btn-field">
+      <button
+        type="submit"
+        class="button button-blue"
+        [ngClass]="
+          form.invalid && (form.touched || form.dirty) ? 'button-disable' : ''
+        "
+        [disabled]="form.invalid && (form.touched || form.dirty)"
+      >
+        Update Information
+      </button>
+      <button type="button" class="button button-blue" (click)="exportToCSV()">
+        Export Information
+      </button>
+    </div>
+  </form>
+</main>
