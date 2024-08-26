@@ -17,7 +17,9 @@ export class AuthService {
 
   login(data: LoginRequestInterface): Observable<AuthReponseInterface> {
     //const url = 'https://fakefaceapi.onrender.com' + '/login';
-    const url = environment.apiUrl + '/login'
+    console.warn('environment.production', environment.production);
+
+    const url = environment.apiUrl + '/login';
     return this.httpClient.post<AuthReponseInterface>(url, data);
   }
 
