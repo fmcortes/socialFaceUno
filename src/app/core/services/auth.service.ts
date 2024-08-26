@@ -5,6 +5,7 @@ import { LoginRequestInterface } from '../types/login-request.interface';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
 import { AuthReponseInterface } from '../types/authResponse.interface';
 import { RegisterRequestInterface } from '../types/register-request.interface';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -15,7 +16,8 @@ export class AuthService {
   }
 
   login(data: LoginRequestInterface): Observable<AuthReponseInterface> {
-    const url = 'https://fakefaceapi.onrender.com' + '/login';
+    //const url = 'https://fakefaceapi.onrender.com' + '/login';
+    const url = environment.apiUrl + '/login'
     return this.httpClient.post<AuthReponseInterface>(url, data);
   }
 
