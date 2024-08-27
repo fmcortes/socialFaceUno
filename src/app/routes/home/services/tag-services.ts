@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-import {TagType} from '../../../shared/components/posts/types/tags-type'
 import { Tag } from '../types/tag.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable()
 export class TagService {
+  url = environment.apiUrl;
   constructor(private httpClient: HttpClient) {}
 
   getTags(): Observable<Tag[]> {
-    const url = 'https://fakefaceapi.onrender.com/tagList';
-    return this.httpClient.get<Tag[]>(url);
+    return this.httpClient.get<Tag[]>(`${this.url}/tagList`);
   }
 }
