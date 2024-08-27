@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthFacade } from 'src/app/core/layout/auth-layout/store/auth/auth-facade';
-import { ProfileInterface } from '../types/profile.interface';
-import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
+import { AuthFacade } from '../../../../core/layout/auth-layout/store/auth/auth-facade';
+
+import { CurrentUserInterface } from '../../../../shared/types/current-user.interface';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PostInterface } from '../types/post.interface';
 import { PostFacade } from '../store/posts-facade';
@@ -50,7 +50,6 @@ export class PostWriterComponent {
       favoritesCount: 0,
       userId: this.profileUser?.id,
     };
-    console.warn('request', request);
     this.postFacade.createPost(request);
   }
 }

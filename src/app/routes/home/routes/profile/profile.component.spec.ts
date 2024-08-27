@@ -7,6 +7,7 @@ import { of } from 'rxjs';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { CommonModule } from '@angular/common';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -27,7 +28,7 @@ describe('ProfileComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ProfileComponent],
-      imports: [CommonModule, ProfileRoutingModule, SharedModule],
+      imports: [CommonModule, ProfileRoutingModule, SharedModule, RouterTestingModule],
       providers: [
         { provide: AuthFacade, useValue: mockAuthFacade },
         { provide: PostFacade, useValue: mockPostFacade },

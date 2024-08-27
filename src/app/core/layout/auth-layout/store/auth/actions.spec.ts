@@ -4,7 +4,7 @@ import { CurrentUserInterface } from '../../../../../shared/types/current-user.i
 
 import { authActions } from './actions';
 
-fdescribe('Auth Actions', () => {
+describe('Auth Actions', () => {
   const currentUser: CurrentUserInterface = {
     accesToken: 'token',
     email: 'test@email.com',
@@ -95,6 +95,86 @@ fdescribe('Auth Actions', () => {
       const logOutFailure = authActions.logoutFailure({ errors });
       expect(logOutFailure).toBeTruthy();
       expect(logOutFailure.errors).toBe(errors);
+    });
+  });
+
+  describe('Forgot password', () => {
+    it('should forgot password', () => {
+      const request = 'test@mail.com';
+      const forgotAction = authActions.forgotPassword({ request });
+
+      expect(forgotAction).toBeTruthy();
+      expect(forgotAction.request).toEqual(request);
+    });
+
+    it('should forgot password success', () => {
+      const forgotAction = authActions.forgotPasswordSuccess();
+
+      expect(forgotAction).toBeTruthy();
+    });
+
+    it('should forgot password failure', () => {
+      const errors: BackendErrorsInterface = {
+        ['error']: ['Forgot failed'],
+      };
+      const forgotAction = authActions.forgotPasswordFailure({ errors });
+
+      expect(forgotAction).toBeTruthy();
+      expect(forgotAction.errors).toEqual(errors);
+    });
+  });
+
+  describe('Current user', () => {
+    it('should get the current user', () => {
+      const currentUserAction = authActions.getCurrentUser();
+      expect(currentUserAction).toBeTruthy();
+    });
+
+    it('should get the current user success', () => {
+      const currentUserAction = authActions.getCurrentUserSuccess({
+        currentUser,
+      });
+      expect(currentUserAction).toBeTruthy();
+      expect(currentUserAction.currentUser).toEqual(currentUser);
+    });
+
+    it('should get the current user fail', () => {
+      const errors: BackendErrorsInterface = {
+        ['error']: ['Current failed'],
+      };
+      const currentUserAction = authActions.getCurrentUserFailure({
+        errors,
+      });
+      expect(currentUserAction).toBeTruthy();
+      expect(currentUserAction.errors).toEqual(errors);
+    });
+  });
+
+  describe('Update user', () => {
+    it('should update user', () => {
+      const updateUserAction = authActions.updateCurrentUser({ currentUser });
+      expect(updateUserAction).toBeTruthy();
+    });
+    it('should update user success', () => {
+      const updateUserAction = authActions.updateCurrentUserSuccess({
+        currentUser,
+      });
+      expect(updateUserAction).toBeTruthy();
+      expect(updateUserAction.currentUser).toEqual(currentUser);
+    });
+
+    it('should update user fail', () => {
+      const errors = 'Fail to update user';
+      const updateUserAction = authActions.updateCurrentFailure({ errors });
+      expect(updateUserAction).toBeTruthy();
+      expect(updateUserAction.errors).toEqual(errors);
+    });
+  });
+
+  describe('Clear errors', () => {
+    it('should clear errors', () => {
+      const clearActions = authActions.clearErrors();
+      expect(clearActions).toBeTruthy();
     });
   });
 });

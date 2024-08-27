@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { combineLatest } from 'rxjs';
-import { PostFacade } from 'src/app/shared/components/posts/store/posts-facade';
+import {  PostFacade} from "../../../../shared/components/posts/store/posts-facade";
 
 @Component({
   selector: 'app-posts',

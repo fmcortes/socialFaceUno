@@ -18,10 +18,12 @@ describe('HomeComponent', () => {
 
   const mockPostFacade: Partial<PostFacade> = {
     posts$: of(),
+    fetchPosts: () => {},
   };
 
   const mockTagsFacade: Partial<TagsFacade> = {
     tags$: of(),
+    fetchTags: () => {},
   };
 
   beforeEach(async () => {
