@@ -24,6 +24,4 @@ export class SettingsComponent {
   logout(): void {
     this.authFacade.logOut();
   }
-
-  darkMode(): void {}
 }
