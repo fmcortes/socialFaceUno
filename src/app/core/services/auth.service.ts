@@ -10,42 +10,48 @@ import { environment } from 'src/environments/environment';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
+  url = environment.apiUrl;
 
   getUser(response: AuthReponseInterface): CurrentUserInterface {
     return response.user;
   }
 
   login(data: LoginRequestInterface): Observable<AuthReponseInterface> {
-    //const url = 'https://fakefaceapi.onrender.com' + '/login';
-    console.warn('environment.production', environment.production);
-
-    const url = environment.apiUrl + '/login';
-    return this.httpClient.post<AuthReponseInterface>(url, data);
+    return this.httpClient.post<AuthReponseInterface>(
+      `${this.url}/login`,
+      data
+    );
   }
 
   register(data: RegisterRequestInterface): Observable<AuthReponseInterface> {
-    const url = 'https://fakefaceapi.onrender.com/register';
-    return this.httpClient.post<AuthReponseInterface>(url, data);
+    return this.httpClient.post<AuthReponseInterface>(
+      `${this.url}/register`,
+      data
+    );
   }
 
   forgotPassword(email: string): Observable<string> {
-    const url = 'https://fakefaceapi.onrender.com/forgotpasswords';
-    return this.httpClient.post<string>(url, { email });
+    return this.httpClient.post<string>(`${this.url}/forgotpasswords`, {
+      email,
+    });
   }
 
   getCurrentUser(email: string): Observable<CurrentUserInterface> {
-    const url = `https://fakefaceapi.onrender.com/users?email=${email}`;
-    return this.httpClient.get<CurrentUserInterface[]>(url).pipe(
-      map((currentUsersResponse) => {
-        return currentUsersResponse[0];
-      })
-    );
+    return this.httpClient
+      .get<CurrentUserInterface[]>(`${this.url}/users?email=${email}`)
+      .pipe(
+        map((currentUsersResponse) => {
+          return currentUsersResponse[0];
+        })
+      );
   }
 
   updateUser(
     currentUser: CurrentUserInterface
   ): Observable<CurrentUserInterface> {
-    const url = `https://fakefaceapi.onrender.com/users/${currentUser.id}`;
-    return this.httpClient.patch<CurrentUserInterface>(url, currentUser);
+    return this.httpClient.patch<CurrentUserInterface>(
+      `${this.url}/users/${currentUser.id}`,
+      currentUser
+    );
   }
 }
