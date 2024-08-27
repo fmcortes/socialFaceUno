@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve" ,
     "build": "ng build",
-    "deploy": "ng build --configuration production --base-href /socialFaceUno/",
+    "deploy": "ng build --base-href /socialFaceUno/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

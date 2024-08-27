@@ -5,7 +5,7 @@ import { LoginRequestInterface } from '../types/login-request.interface';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
 import { AuthReponseInterface } from '../types/authResponse.interface';
 import { RegisterRequestInterface } from '../types/register-request.interface';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
