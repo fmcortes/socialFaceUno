@@ -2,14 +2,11 @@
 
 1. Ensure you have the correct version of node installed. If using [nvm](https://github.com/nvm-sh/nvm) run `nvm use`
 2. Install the dependecies `npm ci`
-3. Run the applicaiton `npm start`
-4. Acces the application :
-    1. Manually visit http://localhost:4200/#
-
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+3. Run the back end server 
+    1.  In a second terminal navigate to the folder where you downladed the backend  code 
+    2. In the correct folder run the command `npm run start-auth` (Check [Prerequisites page ](./PREREQUISITES.md))
+4. In the first terminal run the command `npm start`
+5. Acces the application by manually visit http://localhost:4200/#
 
 ## Build
 Run `npm run build` to build the project. The build artifacts will be stored in the `dist/` directory.
@@ -20,4 +17,5 @@ Run `npm run test` to execute the unit tests via [Karma](https://karma-runner.gi
 
 ## Running end-to-end tests
 
-Run `npm run  e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that 
+TO-DO
+Implement playwright for E2E

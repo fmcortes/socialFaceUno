@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { LoginRequestInterface } from '../types/login-request.interface';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
-import { AuthReponseInterface } from '../types/authResponse.interface';
+import { AuthReponseInterface } from '../types/auth-response.interface';
 import { RegisterRequestInterface } from '../types/register-request.interface';
 import { environment } from 'src/environments/environment';
 

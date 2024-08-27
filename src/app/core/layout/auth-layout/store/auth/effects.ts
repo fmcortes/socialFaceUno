@@ -4,7 +4,7 @@ import { AuthService } from '../../../../services/auth.service';
 import { PersistanceService } from 'src/app/shared/services/persistance.service';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { authActions } from './actions';
-import { AuthReponseInterface } from '../../../../types/authResponse.interface';
+import { AuthReponseInterface } from '../../../../types/auth-response.interface';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CurrentUserInterface } from 'src/app/shared/types/current-user.interface';
