@@ -89,3 +89,12 @@ Run the following command to use the version provide it in the repository
 ```
 nvm use
 ```
+
+Clone back end repository from [Github fakeFaceAPI](https://github.com/fmcortes/fakeFaceAPI)
+
+Install dependencies by running
+
+```
+npm i
+```
+
