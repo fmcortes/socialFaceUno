@@ -59,7 +59,7 @@ export const authFeature = createFeature({
       isSubmiting: false,
       currentUser: null,
     })),
-    on(authActions.loginFailure, (state, action) => ({
+    on(authActions.logoutFailure, (state, action) => ({
       ...state,
       isSubmiting: false,
       validationErrors: action.errors,

@@ -6,9 +6,10 @@
     (scrolled)="onScrollDown()"
     [attr.aria-busy]="isLoading"
     [attr.aria-label]="postTitle + ' posts page'"
+    data-testid="post-list-container"
   >
     <ng-container *ngFor="let post of postList; let i = index">
-      <app-post-item [post]="post" [position]="i + 1"></app-post-item>
+      <app-post-item [post]="post" [position]="i + 1" data-testid="post-item"></app-post-item>
       <ng-container *ngIf="(i + 1) % 4 === 0">
         <article
           [attr.aria-posinset]="i + 1"
