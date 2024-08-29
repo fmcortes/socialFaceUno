@@ -215,8 +215,8 @@
           * Notification is required
         </div>
         <p class="required-fields">* Required Fields</p>
-        <p>Sign In <a class="blue-link" [routerLink]="['/auth/login']">Register</a></p>
-        <p>Lost Password <a [routerLink]="['/auth/forgot-password']" class="blue-link">Forgot Password</a></p>
+        <p>Sign In <a class="blue-link" [routerLink]="['/auth/login']" data-testid="login-link">Login</a></p>
+        <p>Lost Password <a [routerLink]="['/auth/forgot-password']" data-testid="forgot-link" class="blue-link">Forgot Password</a></p>
       </div>
       <div class="btn-field">
         <button
