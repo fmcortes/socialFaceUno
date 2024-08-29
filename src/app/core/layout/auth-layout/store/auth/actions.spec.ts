@@ -88,9 +88,7 @@ describe('Auth Actions', () => {
     });
 
     it('should logut fail', () => {
-      const errors: BackendErrorsInterface = {
-        ['error']: ['Login failed'],
-      };
+      const errors = 'Login failed'
 
       const logOutFailure = authActions.logoutFailure({ errors });
       expect(logOutFailure).toBeTruthy();

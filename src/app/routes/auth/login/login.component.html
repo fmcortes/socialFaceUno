@@ -28,6 +28,7 @@
               name="userEmail"
               id="userEmail"
               formControlName="email"
+              data-testid="email-field"
             />
           </div>
         </div>
@@ -37,6 +38,7 @@
             form.controls.email.invalid &&
             (form.controls.email.dirty || form.controls.email.touched)
           "
+          data-testid="email-error-message"
         >
           * Email is required
         </div>
@@ -61,6 +63,7 @@
               id="userPassword"
               placeholder="Password"
               formControlName="password"
+              data-testid="password-field"
             />
           </div>
         </div>
@@ -70,17 +73,26 @@
             form.controls.password.invalid &&
             (form.controls.password.dirty || form.controls.password.touched)
           "
+          data-testid="password-error-message"
         >
           * Password is required
         </div>
         <p class="required-fields">* Required Fields</p>
         <p>
           Don't have an account?
-          <a class="blue-link" [routerLink]="['/auth/register']">Register</a>
+          <a
+            class="blue-link"
+            data-testid="register-link"
+            [routerLink]="['/auth/register']"
+            >Register</a
+          >
         </p>
         <p>
           Lost Your Password
-          <a class="blue-link" [routerLink]="['/auth/forgot-password']"
+          <a
+            class="blue-link"
+            data-testid="forgot-link"
+            [routerLink]="['/auth/forgot-password']"
             >Forgot Password</a
           >
         </p>
@@ -93,6 +105,7 @@
             form.invalid && (form.touched || form.dirty) ? 'button-disable' : ''
           "
           [disabled]="form.invalid && (form.touched || form.dirty)"
+          data-testid="submit-button"
         >
           Sign In
         </button>
