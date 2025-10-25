@@ -1,19 +1,24 @@
 # Architecture
 
+This is a minor change to test
+
 ## Project structure
 
 The project follows the next principle LIFT
+
 - Locate: Group coherently
 - Identify: Name to indicate the content
 - Flat: Create subfolders if necessary
 - Try-DRY: Some redundancy can be beneficial
 
 ### File naming convetion
+
 Compose the name from functional and technical nature `functional.technical.ts`
 
 For example : `profile-detail.component.html` , `current-user.interface.ts`
 
 ### Folder Structure
+
 Group files in folders
 In order to add new functionalities follow the next:
 
@@ -27,8 +32,10 @@ In order to add new functionalities follow the next:
 - /routes (the functional branches of the navigation tree)
 - /shared (utilities to be used from functional branches)
 ```
+
 > [!NOTE]
 > Grouping files
+>
 > - A folder with less than 5 elements does not need to be subdivided
 > - A folder with more than 15 elements must be subdivided
 > - Folders between 6 and 14 items are divided if an obvious criterion arises
@@ -39,31 +46,30 @@ In order to add new functionalities follow the next:
 
 <img src="./assets/app.drawio.png">
 
-
 ### Core
+
 This folder will be home to things you’ll use once in the lifetime of the application. Things we used to call singletons were provided at the root as injectable services.
 Example: `spinner.service.ts`
 
->[!Note]
->Use a core folder for providers and configurations used across the entire application. Consider adding features not related to routes like a header, footer, dialogs and any layout components.
+> [!Note]
+> Use a core folder for providers and configurations used across the entire application. Consider adding features not related to routes like a header, footer, dialogs and any layout components.
 
 <img src="./assets/core.png">
 
-
 ### Routes
 
- Routes are navigation trees
- Keep related routes in the same folder for example
- `home/routes/settings`
+Routes are navigation trees
+Keep related routes in the same folder for example
+`home/routes/settings`
 
->[!Note]
->Inside each route try to group the necesities for the module like services, store, components.
+> [!Note]
+> Inside each route try to group the necesities for the module like services, store, components.
 
 <img src="./assets/routes.png">
 
 ### Shared
 
-All things not related to a specific feature or not provided as services at the application level have a place here. 
+All things not related to a specific feature or not provided as services at the application level have a place here.
 
 > [!Note]
 > Divide the shared folder using this technical criterion that will be more helpful
@@ -80,12 +86,10 @@ NgRx Store is mainly for managing global state across an entire application.
 
 <img src="./assets/state-management-lifecycle.png">
 
-
 ### NgRx and Facade Pattern
 
 The NgRx Facade Pattern is an architectural design pattern that introduces an additional layer (the facade) between the Angular components and the NgRx store.
 
-The facade itself is a service that encapsulates the NgRx store logic, exposing only the necessary functionalities to the components. 
+The facade itself is a service that encapsulates the NgRx store logic, exposing only the necessary functionalities to the components.
 
 <img src="./assets/NgrxFacade.drawio.png">
-
